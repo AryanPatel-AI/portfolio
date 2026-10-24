@@ -1,43 +1,61 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 export default function NotFound() {
+  const [selectedView, setSelectedView] = useState<"auto" | "wide" | "portrait">("auto");
+
   return (
     <div className="relative w-full h-screen min-h-[640px] overflow-hidden bg-[#0e0c0a] text-[#f5ede0] flex flex-col justify-between selection:bg-[#9a7d5c]/30 selection:text-white">
-      {/* ================= HIGH-RESOLUTION ARCHITECTURAL BACKGROUND ================= */}
-      {/* Desktop / Landscape Layout */}
+      {/* ================= ARCHITECTURAL BACKGROUNDS ================= */}
+      {/* 1. Widescreen Architecture Perspective (Landscape / Colonnade & Arches) */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-no-repeat hidden md:block pointer-events-none"
+        className={`absolute inset-0 w-full h-full bg-cover bg-no-repeat pointer-events-none transition-opacity duration-700 ease-out ${
+          selectedView === "wide"
+            ? "opacity-100 z-0"
+            : selectedView === "portrait"
+            ? "opacity-0 -z-10"
+            : "hidden md:block opacity-100 z-0"
+        }`}
         style={{
           backgroundImage: "url('/not-found-bg-wide.jpg')",
           backgroundPosition: "center right",
         }}
       />
-      {/* Mobile / Portrait Layout */}
+
+      {/* 2. Portrait Architecture Perspective (Sunlit Archway Portal) */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-no-repeat md:hidden pointer-events-none"
+        className={`absolute inset-0 w-full h-full bg-cover bg-no-repeat pointer-events-none transition-opacity duration-700 ease-out ${
+          selectedView === "portrait"
+            ? "opacity-100 z-0"
+            : selectedView === "wide"
+            ? "opacity-0 -z-10"
+            : "md:hidden opacity-100 z-0"
+        }`}
         style={{
           backgroundImage: "url('/not-found-bg.jpg')",
-          backgroundPosition: "center center",
+          backgroundPosition: "center 35%",
         }}
       />
 
       {/* Atmospheric directional shadow & depth overlays for optimal text legibility */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none z-10"
         style={{
           background:
-            "linear-gradient(to right, rgba(14, 12, 10, 0.9) 0%, rgba(14, 12, 10, 0.65) 36%, rgba(14, 12, 10, 0.18) 64%, transparent 86%)",
+            "linear-gradient(to right, rgba(14, 12, 10, 0.92) 0%, rgba(14, 12, 10, 0.68) 36%, rgba(14, 12, 10, 0.2) 64%, transparent 86%)",
         }}
       />
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none z-10"
         style={{
           background:
-            "linear-gradient(to top, rgba(14, 12, 10, 0.45) 0%, transparent 22%, transparent 78%, rgba(14, 12, 10, 0.5) 100%)",
+            "linear-gradient(to top, rgba(14, 12, 10, 0.5) 0%, transparent 20%, transparent 80%, rgba(14, 12, 10, 0.45) 100%)",
         }}
       />
 
-      {/* Elegant Architectural Inner Framing Border matching mockups */}
+      {/* Architectural Inner Framing Border matching mockups */}
       <div className="pointer-events-none absolute inset-2 sm:inset-3 md:inset-4 border border-[#3e3428]/35 rounded-[3px] z-20" />
 
       {/* ================= 1. TOP NAVIGATION BAR ================= */}
@@ -130,8 +148,38 @@ export default function NotFound() {
         </div>
       </main>
 
-      {/* ================= 3. BOTTOM SPACING / PADDING ================= */}
-      <div className="relative z-30 w-full px-6 sm:px-10 lg:px-14 pb-4 sm:pb-6" />
+      {/* ================= 3. FOOTER & PERSPECTIVE SWITCHER ================= */}
+      <footer className="relative z-30 w-full flex items-center justify-between px-6 sm:px-10 lg:px-14 py-4 sm:py-6 text-[8.5px] sm:text-[9.5px] tracking-[0.22em] text-[#73685c] uppercase font-medium">
+        <div>404 / Page Not Found</div>
+
+        {/* Dual-Background Perspective Switcher */}
+        <div className="flex items-center gap-2 bg-[#120f0c]/70 backdrop-blur-xs px-2.5 py-1 rounded-full border border-[#3e3428]/60">
+          <span className="text-[#615649] select-none text-[8px]">View:</span>
+          <button
+            type="button"
+            onClick={() => setSelectedView("wide")}
+            className={`transition-colors cursor-pointer px-1.5 py-0.5 rounded text-[8px] sm:text-[8.5px] ${
+              selectedView === "wide" || (selectedView === "auto")
+                ? "text-[#e8ded2] font-semibold"
+                : "text-[#73685c] hover:text-[#b3a798]"
+            }`}
+          >
+            Cloister
+          </button>
+          <span className="text-[#42392f] select-none">·</span>
+          <button
+            type="button"
+            onClick={() => setSelectedView("portrait")}
+            className={`transition-colors cursor-pointer px-1.5 py-0.5 rounded text-[8px] sm:text-[8.5px] ${
+              selectedView === "portrait"
+                ? "text-[#e8ded2] font-semibold"
+                : "text-[#73685c] hover:text-[#b3a798]"
+            }`}
+          >
+            Portal
+          </button>
+        </div>
+      </footer>
     </div>
   );
 }
