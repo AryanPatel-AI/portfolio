@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <a href="#" className="brand footer-brand">
+      <Link href="/" className="brand footer-brand">
         <span className="brand-mark">
           <svg
             viewBox="0 0 24 24"
@@ -18,11 +20,11 @@ export default function Footer() {
           </svg>
         </span>
         <span>ARYAN PATEL</span>
-      </a>
+      </Link>
 
       <span>© {new Date().getFullYear()} ARYAN PATEL. ALL RIGHTS RESERVED.</span>
 
-      <a href="#about">BACK TO TOP ↑</a>
+      <Link href="/about">ABOUT ARYAN →</Link>
     </footer>
   );
 }

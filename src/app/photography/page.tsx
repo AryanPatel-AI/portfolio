@@ -5,8 +5,8 @@ export default function PhotographyPage() {
     {
       title: "Landscapes",
       slug: "landscapes",
-      count: "24 Photos",
-      cover: "/aryan-portrait.jpg",
+      count: "7 Curated Works",
+      cover: "/images/photography/landscapes/mountain-fort-ridge.jpg",
       desc: "Nature, light and endless horizons across India.",
     },
     {
@@ -51,7 +51,7 @@ export default function PhotographyPage() {
             Photography
           </Link>
           <span className="text-[#a89580]">—</span>
-          <Link href="/#contact" className="hover:text-[#211e19] transition-colors">
+          <Link href="/contact" className="hover:text-[#211e19] transition-colors">
             Contact
           </Link>
         </nav>

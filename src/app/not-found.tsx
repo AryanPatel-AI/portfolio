@@ -91,7 +91,7 @@ export default function NotFound() {
             Photography
           </Link>
           <span className="text-[#5a4f43] select-none text-[8px]">-</span>
-          <Link href="/#contact" className="hover:text-[#f5ede0] transition-colors duration-200">
+          <Link href="/contact" className="hover:text-[#f5ede0] transition-colors duration-200">
             Contact
           </Link>
         </nav>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function About() {
   return (
     <section id="about" className="intro-section">
@@ -10,9 +12,14 @@ export default function About() {
         Bridging the analytical depth of machine learning algorithms with the aesthetic sensitivity
         of editorial photography, I build experiences and models that are as intuitive as they are powerful.
       </p>
-      <a href="#work" className="text-link">
-        EXPLORE SELECTED WORKS →
-      </a>
+      <div className="flex flex-wrap items-center gap-6 mt-4">
+        <Link href="/about" className="text-link">
+          READ FULL STORY →
+        </Link>
+        <Link href="/work" className="text-link">
+          EXPLORE SELECTED WORKS →
+        </Link>
+      </div>
     </section>
   );
 }

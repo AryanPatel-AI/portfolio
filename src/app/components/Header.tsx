@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
     <header className="header">
-      <a href="#" className="brand">
+      <Link href="/" className="brand">
         <span className="brand-mark">
           <svg
             viewBox="0 0 24 24"
@@ -24,7 +25,7 @@ export default function Header() {
           </svg>
         </span>
         <span>ARYAN PATEL</span>
-      </a>
+      </Link>
 
       <button
         className="menu-toggle"
@@ -35,21 +36,21 @@ export default function Header() {
       </button>
 
       <nav className={`nav ${navOpen ? "nav-open" : ""}`}>
-        <a href="#work" onClick={() => setNavOpen(false)}>
+        <Link href="/work" onClick={() => setNavOpen(false)}>
           Work
-        </a>
+        </Link>
         <span className="nav-line" aria-hidden="true" />
-        <a href="#about" onClick={() => setNavOpen(false)}>
+        <Link href="/about" onClick={() => setNavOpen(false)}>
           About
-        </a>
+        </Link>
         <span className="nav-line" aria-hidden="true" />
-        <a href="#work" onClick={() => setNavOpen(false)}>
+        <Link href="/photography" onClick={() => setNavOpen(false)}>
           Photography
-        </a>
+        </Link>
         <span className="nav-line" aria-hidden="true" />
-        <a href="#contact" onClick={() => setNavOpen(false)}>
+        <Link href="/contact" onClick={() => setNavOpen(false)}>
           Contact
-        </a>
+        </Link>
       </nav>
 
       <div className="header-note">

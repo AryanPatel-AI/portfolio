@@ -1,8 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import DiamondNav from "./DiamondNav";
+
 export default function Hero() {
   return (
-    <section className="hero">
+    <section id="hero" className="hero">
       <div className="hero-image" />
       <div className="hero-wash" />
 
@@ -33,21 +36,15 @@ export default function Hero() {
           Gamer
         </p>
 
-        <a href="#about" className="scroll-link">
-          <span className="scroll-circle">↓</span>
-          <span>SCROLL TO EXPLORE</span>
+        <Link href="/about" className="scroll-link">
+          <span className="scroll-circle">→</span>
+          <span>EXPLORE ABOUT ME</span>
           <span className="scroll-line" aria-hidden="true" />
-        </a>
+        </Link>
       </div>
 
-      {/* Right Side Vertical Indicator */}
-      <div className="side-indicator" aria-hidden="true">
-        <span className="side-diamond active">◆</span>
-        <span className="side-diamond">◇</span>
-        <span className="side-diamond">◆</span>
-        <span className="side-diamond">●</span>
-        <span className="side-track" />
-      </div>
+      {/* Right Side Vertical Diamond Navigation Indicator */}
+      <DiamondNav />
 
       {/* Hero Footer Tag (Bottom Right) */}
       <div className="hero-footer">

@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
 
 :root {
   --cream: #f8eddb;
@@ -52,9 +52,9 @@ button {
 }
 
 .hero-image {
-  background-image: url('/aryan-portrait.jpg'), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85');
+  background-image: url('/aryan-portrait.jpg');
   background-size: cover;
-  background-position: center 42%;
+  background-position: 72% center;
   transform: scale(1.015);
   animation: reveal-image 1.3s ease-out both;
 }
@@ -63,13 +63,12 @@ button {
   z-index: -1;
   background: linear-gradient(
       90deg,
-      rgba(255, 245, 225, 0.98) 0%,
-      rgba(255, 240, 215, 0.92) 28%,
-      rgba(255, 237, 207, 0.56) 43%,
-      rgba(255, 235, 207, 0.04) 62%,
-      rgba(31, 24, 16, 0.13) 100%
+      rgba(250, 241, 226, 0.75) 0%,
+      rgba(250, 241, 226, 0.5) 32%,
+      rgba(250, 241, 226, 0.1) 52%,
+      transparent 70%
     ),
-    linear-gradient(0deg, rgba(39, 29, 19, 0.16), transparent 24%);
+    linear-gradient(0deg, rgba(39, 29, 19, 0.2), transparent 22%);
 }
 
 .header {
@@ -578,14 +577,14 @@ button {
     max-height: 980px;
   }
   .hero-image {
-    background-position: 62% center;
+    background-position: 75% center;
   }
   .hero-wash {
     background: linear-gradient(
         90deg,
-        rgba(255, 243, 221, 0.94) 0%,
-        rgba(255, 241, 217, 0.82) 45%,
-        rgba(255, 237, 210, 0.22) 100%
+        rgba(255, 243, 221, 0.88) 0%,
+        rgba(255, 241, 217, 0.72) 48%,
+        rgba(255, 237, 210, 0.2) 100%
       ),
       linear-gradient(0deg, rgba(42, 31, 19, 0.3), transparent 35%);
   }

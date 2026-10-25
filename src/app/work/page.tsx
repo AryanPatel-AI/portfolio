@@ -78,7 +78,7 @@ export default function WorkPage() {
             Photography
           </Link>
           <span className="text-[#a89580]">—</span>
-          <Link href="/#contact" className="hover:text-[#211e19] transition-colors">
+          <Link href="/contact" className="hover:text-[#211e19] transition-colors">
             Contact
           </Link>
         </nav>

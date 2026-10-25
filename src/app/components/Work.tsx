@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Work() {
   const projects = [
     {
@@ -35,7 +37,11 @@ export default function Work() {
 
       <div className="work-grid">
         {projects.map((project, index) => (
-          <div key={index} className={`work-card ${project.cardClass}`}>
+          <Link
+            href="/work"
+            key={index}
+            className={`work-card ${project.cardClass} block text-inherit no-underline cursor-pointer`}
+          >
             <div>
               <div className="card-number">{project.number}</div>
               <span className="card-symbol" aria-hidden="true">
@@ -48,7 +54,7 @@ export default function Work() {
             <span className="card-arrow" aria-hidden="true">
               ↗
             </span>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

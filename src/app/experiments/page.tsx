@@ -35,7 +35,7 @@ export default function ExperimentsPage() {
             Photography
           </Link>
           <span className="text-[#5e4f42]">—</span>
-          <Link href="/#contact" className="hover:text-white transition-colors">
+          <Link href="/contact" className="hover:text-white transition-colors">
             Contact
           </Link>
         </nav>
