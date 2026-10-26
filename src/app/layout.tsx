@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aryan Patel — AI, Code & Photography",
-  description: "The portfolio of Aryan Patel — AI student, creative developer, and photographer.",
+  title: "Aryan Patel — AI, Systems & Photography",
+  description:
+    "The official portfolio of Aryan Patel — BTech in Artificial Intelligence, creative software engineer, and photographer.",
 };
 
 export default function RootLayout({
@@ -19,10 +20,6 @@ export default function RootLayout({
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
         />
       </head>
       <body>{children}</body>

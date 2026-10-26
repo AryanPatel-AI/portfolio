@@ -13,7 +13,7 @@ export default function Contact() {
           <span aria-hidden="true">→</span>
         </Link>
         <a
-          href="mailto:aryanpatel66871@gmail.com"
+          href="mailto:aryan.btai2023019@invertisuniversity.ac.in"
           className="contact-button"
         >
           <span>EMAIL DIRECTLY</span>

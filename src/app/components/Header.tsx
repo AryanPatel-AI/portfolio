@@ -48,6 +48,10 @@ export default function Header() {
           Photography
         </Link>
         <span className="nav-line" aria-hidden="true" />
+        <Link href="/gaming" onClick={() => setNavOpen(false)}>
+          Gaming
+        </Link>
+        <span className="nav-line" aria-hidden="true" />
         <Link href="/contact" onClick={() => setNavOpen(false)}>
           Contact
         </Link>

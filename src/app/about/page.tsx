@@ -46,51 +46,19 @@ export default function AboutPage() {
           <Link href="/photography" className="hover:text-[#211e19] transition-colors">
             PHOTOGRAPHY
           </Link>
-          <Link href="/experiments" className="hover:text-[#211e19] transition-colors">
-            EXPERIMENTS
+          <Link href="/gaming" className="hover:text-[#211e19] transition-colors">
+            GAMING
           </Link>
           <Link href="/contact" className="hover:text-[#211e19] transition-colors">
             CONTACT
           </Link>
         </nav>
 
-        {/* Right side moon icons & mobile toggle */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 text-[#211e19]">
-            {/* Outline Crescent Moon */}
-            <button
-              type="button"
-              className="p-1 hover:opacity-70 transition-opacity cursor-pointer"
-              aria-label="Theme toggle outline"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-              </svg>
-            </button>
-
-            {/* Filled Crescent Moon */}
-            <button
-              type="button"
-              className="p-1 hover:opacity-70 transition-opacity cursor-pointer"
-              aria-label="Theme toggle filled"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-4 h-4 fill-current"
-                stroke="currentColor"
-                strokeWidth="1"
-              >
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-              </svg>
-            </button>
+        {/* Right side status & mobile toggle */}
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2 text-[10px] tracking-[0.2em] text-[#77573a] uppercase font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#5c8b93]" />
+            <span>AI & Visuals / 2026</span>
           </div>
 
           {/* Mobile menu button */}
@@ -120,8 +88,8 @@ export default function AboutPage() {
           <Link href="/photography" onClick={() => setMobileMenuOpen(false)}>
             PHOTOGRAPHY
           </Link>
-          <Link href="/experiments" onClick={() => setMobileMenuOpen(false)}>
-            EXPERIMENTS
+          <Link href="/gaming" onClick={() => setMobileMenuOpen(false)}>
+            GAMING
           </Link>
           <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
             CONTACT
@@ -148,17 +116,60 @@ export default function AboutPage() {
             </h1>
 
             <p className="text-[#554739] text-[14px] sm:text-[14.5px] leading-[1.75] font-sans max-w-lg mb-7">
-              I&apos;m Aryan Patel, a BTech AI student with a deep curiosity for technology, creativity,
-              and the world around me. I explore the intersection of artificial intelligence, web
-              development, photography and gaming — turning ideas into meaningful experiences.
+              I&apos;m Aryan Patel, a BTech Artificial Intelligence student, creative developer, and photographer.
+              I work at the convergence of machine learning architectures, high-performance financial systems (like TradeSphere Terminal),
+              and visual storytelling across Rajasthan, Kashmir, and Indian heritage landscapes.
             </p>
+
+            <div className="flex flex-wrap items-center gap-2.5 mb-7">
+              <a
+                href="https://github.com/AryanPatel-AI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs"
+              >
+                GitHub ↗
+              </a>
+              <a
+                href="https://www.linkedin.com/in/aryan-patel-ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs"
+              >
+                LinkedIn ↗
+              </a>
+              <a
+                href="https://www.instagram.com/click_by_aryan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs"
+              >
+                Photo: @click_by_aryan ↗
+              </a>
+              <a
+                href="https://www.instagram.com/___aryan___patel/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs"
+              >
+                Personal: @___aryan___patel ↗
+              </a>
+              <a
+                href="https://www.instagram.com/_om_x_aryan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs"
+              >
+                Gaming: @_om_x_aryan ↗
+              </a>
+            </div>
 
             <Link
               href="#journey"
-              className="inline-flex items-center gap-3 px-6 sm:px-7 py-2.5 rounded-full border border-[#2b2118] text-[#211e19] text-[10.5px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-[#211e19] hover:text-[#f8eddb] transition-all duration-300 shadow-2xs group"
+              className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5 group"
             >
-              <span>GET TO KNOW ME</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span className="text-inherit">GET TO KNOW ME</span>
+              <span className="text-inherit transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </div>
 
@@ -166,11 +177,11 @@ export default function AboutPage() {
           <div className="md:col-span-5 flex justify-center md:justify-end">
             <div className="relative w-full max-w-[290px] sm:max-w-[320px] aspect-[3/4] rounded-xl overflow-hidden border border-[rgba(91,68,43,0.22)] shadow-[0_8px_24px_rgba(91,68,43,0.08)] bg-[#f3e5d0]">
               <Image
-                src="/about-portrait-temp.jpg"
+                src="/images/portrait/IMG_0579.jpg"
                 alt="Aryan Patel"
                 fill
                 sizes="(max-width: 768px) 100vw, 320px"
-                className="object-cover object-center"
+                className="object-cover object-[center_20%]"
                 priority
               />
             </div>
@@ -188,7 +199,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {/* Card 1: AI & ML */}
-            <div className="bg-[#fcf7ee]/85 rounded-xl border border-[rgba(91,68,43,0.16)] p-6 sm:p-7 flex flex-col items-center text-center shadow-[0_2px_10px_rgba(91,68,43,0.04)] hover:shadow-[0_8px_20px_rgba(91,68,43,0.08)] hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-[#fcf7ee]/85 rounded-xl border border-[rgba(91,68,43,0.16)] p-6 sm:p-7 flex flex-col items-center text-center shadow-xs hover:shadow-[0_10px_25px_rgba(91,68,43,0.12)] hover:border-[rgba(180,147,104,0.4)] hover:-translate-y-1.5 transition-all duration-300">
               <div className="w-10 h-10 flex items-center justify-center mb-3 text-[#211e19]">
                 <svg
                   viewBox="0 0 24 24"
@@ -217,7 +228,7 @@ export default function AboutPage() {
             </div>
 
             {/* Card 2: Web Development */}
-            <div className="bg-[#fcf7ee]/85 rounded-xl border border-[rgba(91,68,43,0.16)] p-6 sm:p-7 flex flex-col items-center text-center shadow-[0_2px_10px_rgba(91,68,43,0.04)] hover:shadow-[0_8px_20px_rgba(91,68,43,0.08)] hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-[#fcf7ee]/85 rounded-xl border border-[rgba(91,68,43,0.16)] p-6 sm:p-7 flex flex-col items-center text-center shadow-xs hover:shadow-[0_10px_25px_rgba(91,68,43,0.12)] hover:border-[rgba(180,147,104,0.4)] hover:-translate-y-1.5 transition-all duration-300">
               <div className="w-10 h-10 flex items-center justify-center mb-3 text-[#211e19]">
                 <svg
                   viewBox="0 0 24 24"
@@ -242,7 +253,7 @@ export default function AboutPage() {
             </div>
 
             {/* Card 3: Creative Frontend & 3D */}
-            <div className="bg-[#fcf7ee]/85 rounded-xl border border-[rgba(91,68,43,0.16)] p-6 sm:p-7 flex flex-col items-center text-center shadow-[0_2px_10px_rgba(91,68,43,0.04)] hover:shadow-[0_8px_20px_rgba(91,68,43,0.08)] hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-[#fcf7ee]/85 rounded-xl border border-[rgba(91,68,43,0.16)] p-6 sm:p-7 flex flex-col items-center text-center shadow-xs hover:shadow-[0_10px_25px_rgba(91,68,43,0.12)] hover:border-[rgba(180,147,104,0.4)] hover:-translate-y-1.5 transition-all duration-300">
               <div className="w-10 h-10 flex items-center justify-center mb-3 text-[#211e19]">
                 <svg
                   viewBox="0 0 24 24"
@@ -267,7 +278,7 @@ export default function AboutPage() {
             </div>
 
             {/* Card 4: Photography */}
-            <div className="bg-[#fcf7ee]/85 rounded-xl border border-[rgba(91,68,43,0.16)] p-6 sm:p-7 flex flex-col items-center text-center shadow-[0_2px_10px_rgba(91,68,43,0.04)] hover:shadow-[0_8px_20px_rgba(91,68,43,0.08)] hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-[#fcf7ee]/85 rounded-xl border border-[rgba(91,68,43,0.16)] p-6 sm:p-7 flex flex-col items-center text-center shadow-xs hover:shadow-[0_10px_25px_rgba(91,68,43,0.12)] hover:border-[rgba(180,147,104,0.4)] hover:-translate-y-1.5 transition-all duration-300">
               <div className="w-10 h-10 flex items-center justify-center mb-3 text-[#211e19]">
                 <svg
                   viewBox="0 0 24 24"
@@ -305,11 +316,11 @@ export default function AboutPage() {
 
             <div className="relative aspect-[16/10] sm:aspect-video rounded-xl overflow-hidden border border-[rgba(91,68,43,0.2)] shadow-sm bg-[#e9d6bf]">
               <Image
-                src="/about-journey-temp.jpg"
-                alt="My Journey"
+                src="/images/portrait/aryan-pillared-court.jpg"
+                alt="Aryan Patel Photography & Heritage Colonnade Journey"
                 fill
                 sizes="(max-width: 768px) 100vw, 550px"
-                className="object-cover object-center"
+                className="object-cover object-[center_35%]"
               />
             </div>
           </div>
@@ -320,24 +331,56 @@ export default function AboutPage() {
               Future Goals
             </h2>
 
-            <ul className="space-y-4 text-[#3d3228] text-[13.5px] sm:text-[14px]">
+            <ul className="space-y-4 text-[#3d3228] text-[13.5px] sm:text-[14px] mb-8">
               <li className="flex items-start gap-3">
                 <span className="text-[#8c704f] text-sm mt-0.5 leading-none">•</span>
-                <span>Build impactful AI products</span>
+                <span>Build impactful AI products &amp; agentic architectures</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#8c704f] text-sm mt-0.5 leading-none">•</span>
-                <span>Create immersive web experiences</span>
+                <span>Create immersive, high-performance web experiences</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#8c704f] text-sm mt-0.5 leading-none">•</span>
-                <span>Expand my photography journey</span>
+                <span>Expand my photography journey across India</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#8c704f] text-sm mt-0.5 leading-none">•</span>
-                <span>Work on exciting gaming projects</span>
+                <span>Work on exciting gaming &amp; esports projects</span>
               </li>
             </ul>
+
+            {/* B.Tech & LinkedIn Credentials Card */}
+            <div className="p-5 bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-lg shadow-xs">
+              <div className="flex items-center justify-between text-[10px] font-semibold tracking-wider text-[#806648] uppercase mb-2">
+                <span>B.Tech AI Credentials</span>
+                <span>Verified</span>
+              </div>
+              <h3 className="font-['Playfair_Display'] text-base text-[#211e19] mb-1">
+                Certifications on LinkedIn
+              </h3>
+              <p className="text-xs text-[#554739] leading-relaxed mb-3">
+                Verified in Deep Learning, Machine Learning, Scientific Python, and Full-Stack Engineering.
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="/work#certificates"
+                  className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+                >
+                  <span>View Certificates</span>
+                  <span>→</span>
+                </Link>
+                <a
+                  href="https://www.linkedin.com/in/aryan-patel-ai/details/certifications/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+                >
+                  <span>LinkedIn</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
