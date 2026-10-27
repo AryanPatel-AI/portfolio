@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 interface ProjectData {
   title: string;
@@ -122,6 +123,44 @@ const PROJECTS_MAP: Record<string, ProjectData> = {
     githubUrl: "https://github.com/AryanPatel-AI/ai-event-organiser",
   },
 };
+
+export function generateStaticParams() {
+  return Object.keys(PROJECTS_MAP).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = PROJECTS_MAP[slug];
+  if (!project) {
+    return {
+      title: "Project Architecture & Case Study",
+      description:
+        "System architecture, technical implementation, and case study by Aryan Patel.",
+    };
+  }
+  return {
+    title: `${project.title} — System Architecture & Case Study`,
+    description: project.summary,
+    alternates: {
+      canonical: `/work/${slug}`,
+    },
+    openGraph: {
+      title: `${project.title} | Aryan Patel`,
+      description: project.summary,
+      url: `/work/${slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Aryan Patel`,
+      description: project.summary,
+    },
+  };
+}
 
 export default async function ProjectDetailPage({
   params,

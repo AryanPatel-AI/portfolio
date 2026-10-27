@@ -1,4 +1,20 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Creative Labs & Experimental Prototypes",
+  description:
+    "Interactive shaders, gaming highlights, machine learning audio pipelines, and algorithmic experiments developed by Aryan Patel.",
+  alternates: {
+    canonical: "/experiments",
+  },
+  openGraph: {
+    title: "Creative Labs & Experimental Prototypes | Aryan Patel",
+    description:
+      "Interactive shaders, gaming highlights, machine learning audio pipelines, and algorithmic experiments.",
+    url: "/experiments",
+  },
+};
 
 export default function ExperimentsPage() {
   const items = [

@@ -65,7 +65,7 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         title: "Sunlit Foliage & Character",
         caption:
           "Natural ambient daylight portrait captured amidst lush botanical foliage and soft natural bokeh.",
-        src: "/images/portrait/my-garden-portrait.jpg",
+        src: "/images/portrait/my-garden-portrait.JPG",
         alt: "Portrait with sunlit greenery and natural background",
         aspect: "aspect-[3/4]",
         credit: "@click_by_aryan",
