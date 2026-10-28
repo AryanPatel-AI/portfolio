@@ -141,12 +141,6 @@ export default function WorkPage() {
 
   const honorsAndAwards = [
     {
-      title: "$1,000 Academic Scholarship",
-      issuer: "St. Louis University",
-      badge: "Scholarship",
-      desc: "Awarded for exceptional performance and analytical excellence in data analytics.",
-    },
-    {
       title: "IBM Z Datathon Finalist",
       issuer: "IBM Enterprise",
       badge: "Competition Finalist",
@@ -443,19 +437,19 @@ export default function WorkPage() {
             ))}
           </div>
 
-          {/* Honors, Scholarships & Competitions Strip */}
+          {/* Honors & Competitions Strip */}
           <div className="mt-12 pt-10 border-t border-[rgba(91,68,43,0.15)]">
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2 h-2 rounded-full bg-[#b49368]" />
               <span className="text-[10px] font-semibold tracking-[0.25em] text-[#b49368] uppercase">
-                HONORS, SCHOLARSHIPS &amp; COMPETITIONS
+                HONORS &amp; COMPETITIONS
               </span>
             </div>
             <h3 className="font-['Playfair_Display'] text-2xl sm:text-3xl text-[#211e19] mb-6">
               Leadership &amp; Academic Distinctions
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {honorsAndAwards.map((item, idx) => (
                 <div
                   key={idx}

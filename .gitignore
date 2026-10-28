@@ -47,4 +47,6 @@ worktrees/
 # python virtual environments
 .venv*
 
+opencode.jsonc
+
 
