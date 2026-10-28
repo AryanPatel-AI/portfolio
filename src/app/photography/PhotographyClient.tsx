@@ -27,7 +27,7 @@ export default function PhotographyPage() {
       count: "8 Curated Works",
       cover: "/images/portrait/aryan-pillared-court.jpg",
       desc: "Environmental portraiture observing expression, natural shadows, and character across heritage corridors.",
-      handle: "@click_by_aryan & @___aryan___patel",
+      handle: "@___aryan___patel",
     },
     {
       title: "Mountain Ridges & Dal Lake",
@@ -82,8 +82,8 @@ export default function PhotographyPage() {
       src: "/images/portrait/my-garden-portrait.JPG",
       aspect: "portrait",
       camera: "Natural Light · Field Capture",
-      credit: "@click_by_aryan",
-      instagramUrl: "https://www.instagram.com/click_by_aryan/",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/___aryan___patel/",
     },
     {
       id: "my-road-portrait",
@@ -94,8 +94,8 @@ export default function PhotographyPage() {
       src: "/images/portrait/my-road-portrait.jpg",
       aspect: "portrait",
       camera: "Ambient Daylight · Travel Series",
-      credit: "@click_by_aryan",
-      instagramUrl: "https://www.instagram.com/click_by_aryan/",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/___aryan___patel/",
     },
     {
       id: "jaipur-vibe-portrait",
@@ -516,7 +516,7 @@ export default function PhotographyPage() {
                 {cat === "All"
                   ? "All Frames"
                   : cat === "Portraits"
-                    ? "Portraits (@click_by_aryan & Aryan)"
+                    ? "Portraits (@___aryan___patel)"
                     : cat === "Landscapes"
                       ? "Landscapes & Dal Lake"
                       : "Sacred & Heritage"}

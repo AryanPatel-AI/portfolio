@@ -33,7 +33,7 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
       "Environmental and studio portraiture observing expression, natural shadows, and character across heritage corridors and studio environments.",
     heroSrc: "/images/portrait/aryan-pillared-court.jpg",
     heroAlt: "Aryan Patel standing in a heritage pillared corridor",
-    handle: "@click_by_aryan & @___aryan___patel",
+    handle: "@___aryan___patel",
     photos: [
       {
         id: "aryan-pillared-court",
@@ -68,9 +68,9 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         src: "/images/portrait/my-garden-portrait.JPG",
         alt: "Portrait with sunlit greenery and natural background",
         aspect: "aspect-[3/4]",
-        credit: "@click_by_aryan",
+        credit: "@___aryan___patel",
         camera: "Natural Ambient Light · Field Capture",
-        instagramUrl: "https://www.instagram.com/click_by_aryan/",
+        instagramUrl: "https://www.instagram.com/___aryan___patel/",
       },
       {
         id: "my-road-portrait",
@@ -80,9 +80,9 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         src: "/images/portrait/my-road-portrait.jpg",
         alt: "Portrait on an open highway road under soft daylight",
         aspect: "aspect-[2/3]",
-        credit: "@click_by_aryan",
+        credit: "@___aryan___patel",
         camera: "Ambient Daylight · Travel Series",
-        instagramUrl: "https://www.instagram.com/click_by_aryan/",
+        instagramUrl: "https://www.instagram.com/___aryan___patel/",
       },
       {
         id: "jaipur-vibe-portrait",
@@ -564,23 +564,25 @@ export default function LandscapeCollectionClient({
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <a
-                  href="https://www.instagram.com/click_by_aryan/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-[#211e19] font-semibold hover:text-[#b49368] transition-colors"
-                >
-                  @click_by_aryan ↗
-                </a>
-                <span className="text-[#a89580]">•</span>
-                <a
-                  href="https://www.instagram.com/___aryan___patel/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-[#211e19] font-semibold hover:text-[#b49368] transition-colors"
-                >
-                  @___aryan___patel ↗
-                </a>
+                {collection.handle === "@___aryan___patel" ? (
+                  <a
+                    href="https://www.instagram.com/___aryan___patel/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-[#211e19] font-semibold hover:text-[#b49368] transition-colors"
+                  >
+                    @___aryan___patel ↗
+                  </a>
+                ) : (
+                  <a
+                    href="https://www.instagram.com/click_by_aryan/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-[#211e19] font-semibold hover:text-[#b49368] transition-colors"
+                  >
+                    @click_by_aryan ↗
+                  </a>
+                )}
               </div>
             </div>
 

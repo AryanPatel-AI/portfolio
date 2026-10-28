@@ -96,3 +96,22 @@ test("GET /api/admin/messages validates secret admin token", async () => {
   assert.equal(data.success, true);
   assert.ok(Array.isArray(data.data));
 });
+
+test("Verify all portraits are credited strictly to @___aryan___patel and not click_by_aryan", async () => {
+  const fs = await import("node:fs");
+  const photoClient = fs.readFileSync("src/app/photography/PhotographyClient.tsx", "utf8");
+  const landscapeClient = fs.readFileSync("src/app/photography/[slug]/LandscapeCollectionClient.tsx", "utf8");
+
+  // Ensure my-garden-portrait is credited to @___aryan___patel
+  assert.ok(photoClient.includes('id: "my-garden-portrait"'));
+  assert.ok(photoClient.includes('credit: "@___aryan___patel"'));
+  assert.ok(!photoClient.includes('id: "my-garden-portrait",\n      title: "Sunlit Foliage & Character",\n      category: "Portraits",\n      caption:\n        "Natural ambient daylight portrait captured amidst lush botanical foliage and soft natural bokeh.",\n      src: "/images/portrait/my-garden-portrait.JPG",\n      aspect: "portrait",\n      camera: "Natural Light · Field Capture",\n      credit: "@click_by_aryan"'));
+
+  // Ensure aryan-pillared-court is credited to @___aryan___patel and opens personal account
+  assert.ok(photoClient.includes('id: "aryan-pillared-court"'));
+  assert.ok(photoClient.includes('https://www.instagram.com/___aryan___patel/'));
+
+  // Ensure LandscapeCollectionClient has portraits collection handle @___aryan___patel
+  assert.ok(landscapeClient.includes('portraits: {\n    title: "Portraits & Human Nuance"'));
+  assert.ok(landscapeClient.includes('handle: "@___aryan___patel"'));
+});

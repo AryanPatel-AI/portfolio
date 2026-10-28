@@ -102,16 +102,6 @@ export default function WorkPage() {
       credentialUrl: "https://www.linkedin.com/in/aryan-patel-ai/details/certifications/",
     },
     {
-      title: "Intersection of AI and Environmental Sustainability",
-      issuer: "IBM SkillsBuild (Uploaded on LinkedIn)",
-      category: "Applied AI",
-      date: "B.Tech AI Credential",
-      skills: ["Green AI", "Sustainability Analytics", "Predictive Systems", "Carbon Optimization"],
-      description:
-        "Specialized industry certification analyzing how intelligent algorithms and predictive models optimize energy consumption, resource efficiency, and environmental sustainability.",
-      credentialUrl: "https://www.linkedin.com/in/aryan-patel-ai/details/certifications/",
-    },
-    {
       title: "AI Skills Passport",
       issuer: "Global AI Credential (Uploaded on LinkedIn)",
       category: "AI Readiness",
@@ -140,16 +130,6 @@ export default function WorkPage() {
       description:
         "Modern developer credential in architecting applications with Large Language Models (LLMs), prompt engineering, agentic workflows, and neural inference pipelines.",
       credentialUrl: "https://lnkd.in/p/dXRUWDBK",
-    },
-    {
-      title: "Next Gen Technologies",
-      issuer: "Academic & Tech Credential (Uploaded on LinkedIn)",
-      category: "Emerging Tech",
-      date: "November 2025",
-      skills: ["Next-Gen Architectures", "Cloud Computing", "AI Systems", "Modern Web"],
-      description:
-        "Certificate of completion awarded for mastering emerging technologies, cloud-native deployments, and advanced computational architectures.",
-      credentialUrl: "https://www.linkedin.com/in/aryan-patel-ai/details/certifications/",
     },
   ];
 
