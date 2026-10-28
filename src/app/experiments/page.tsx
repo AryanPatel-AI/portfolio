@@ -31,10 +31,10 @@ export default function ExperimentsPage() {
       linkUrl: "/work",
     },
     {
-      title: "Speech AI Audio Pipeline",
-      category: "Machine Learning · Hugging Face",
-      desc: "Dockerized containerized neural speech-to-text inference API.",
-      linkUrl: "https://github.com/AryanPatel-AI",
+      title: "Speech-to-Text AI Assistant",
+      category: "Speech AI · Scribe Platform",
+      desc: "Clean, minimal, and futuristic AI transcription platform (Scribe) deployed live on Vercel.",
+      linkUrl: "https://speech-to-text-ai-three.vercel.app/",
     },
     {
       title: "TradeSphere Derivatives Analytics",

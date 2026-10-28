@@ -46,6 +46,13 @@ const FEATURED_REPOS = [
     lang: "Python",
   },
   {
+    name: "Speech-to-Text-Assistant",
+    desc: "AI transcription assistant (Scribe) with real-time speech-to-text",
+    stars: 5,
+    forks: 2,
+    lang: "Python",
+  },
+  {
     name: "aitranslator-webapp",
     desc: "Continuous Speech-to-Text & neural translation PWA",
     stars: 4,
