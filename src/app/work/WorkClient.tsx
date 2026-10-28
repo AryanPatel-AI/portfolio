@@ -55,13 +55,14 @@ export default function WorkPage() {
     {
       id: "speech-to-text-ai",
       title: "Speech-to-Text AI Assistant",
-      category: "Deep Learning · Hugging Face",
-      previewUrl: "huggingface.co/spaces/speech-ai",
-      image: "/images/projects/project-ai.jpg",
-      desc: "Dockerized audio intelligence pipeline and conversational assistant deployed on Hugging Face Spaces for real-time speech processing.",
-      stack: ["Docker", "Python", "PyTorch", "Hugging Face"],
+      category: "Speech AI · Scribe Platform",
+      previewUrl: "speech-to-text-ai-three.vercel.app",
+      liveUrl: "https://speech-to-text-ai-three.vercel.app/",
+      image: "/images/projects/speech-to-text.png",
+      desc: "Clean, minimal, and futuristic AI speech-to-text transcription platform (Scribe by Patel & Co.) converting live voice input and audio files into accurate real-time transcriptions.",
+      stack: ["Python Flask", "Web Speech API", "Vercel", "Speech AI"],
       tag: "AI & ML",
-      githubUrl: "https://github.com/AryanPatel-AI",
+      githubUrl: "https://github.com/AryanPatel-AI/Speech-to-Text-Assistant",
     },
     {
       id: "face-recognition",
@@ -281,9 +282,21 @@ export default function WorkPage() {
                     <span className="w-2.5 h-2.5 rounded-full bg-[#e8c87e]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#8fb89c]" />
                   </div>
-                  <span className="text-[10px] tracking-wider text-[#77573a] font-mono">
-                    {p.previewUrl}
-                  </span>
+                  {p.liveUrl ? (
+                    <a
+                      href={p.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[10px] tracking-wider text-[#77573a] hover:text-[#211e19] font-mono hover:underline inline-flex items-center gap-1 transition-colors"
+                    >
+                      <span>{p.previewUrl}</span>
+                      <span className="text-[9px]">↗</span>
+                    </a>
+                  ) : (
+                    <span className="text-[10px] tracking-wider text-[#77573a] font-mono">
+                      {p.previewUrl}
+                    </span>
+                  )}
                   <span className="text-[10px] text-[#b49368]">HTTPS</span>
                 </div>
 
@@ -325,24 +338,38 @@ export default function WorkPage() {
               </div>
 
               {/* Bottom Action Links */}
-              <div className="px-6 py-4 bg-[#f7eedf] border-t border-[rgba(91,68,43,0.15)] flex items-center justify-between gap-3">
+              <div className="px-5 py-4 bg-[#f7eedf] border-t border-[rgba(91,68,43,0.15)] flex flex-wrap items-center justify-between gap-2">
                 <Link
                   href={`/work/${p.id}`}
                   className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
                 >
-                  <span>Architecture &amp; Case Study</span>
+                  <span>Case Study</span>
                   <span>→</span>
                 </Link>
-                <a
-                  href={p.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
-                  aria-label={`View ${p.title} on GitHub`}
-                >
-                  <span>GitHub</span>
-                  <span>↗</span>
-                </a>
+                <div className="flex items-center gap-2">
+                  {p.liveUrl && (
+                    <a
+                      href={p.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1 rounded-full border border-[#211e19] bg-[#211e19] !text-[#f8eddb] text-[10px] font-semibold tracking-wider hover:bg-[#433527] hover:border-[#433527] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                      aria-label={`Visit live demo for ${p.title}`}
+                    >
+                      <span>Live Demo</span>
+                      <span>↗</span>
+                    </a>
+                  )}
+                  <a
+                    href={p.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+                    aria-label={`View ${p.title} on GitHub`}
+                  >
+                    <span>GitHub</span>
+                    <span>↗</span>
+                  </a>
+                </div>
               </div>
             </div>
           ))}

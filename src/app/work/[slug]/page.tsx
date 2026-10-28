@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 interface ProjectData {
@@ -11,6 +12,8 @@ interface ProjectData {
   features: string[];
   objective: string;
   githubUrl: string;
+  liveUrl?: string;
+  image?: string;
 }
 
 const PROJECTS_MAP: Record<string, ProjectData> = {
@@ -31,6 +34,7 @@ const PROJECTS_MAP: Record<string, ProjectData> = {
     objective:
       "Engineered an institutional-grade trading interface enforcing realistic exchange rules, millisecond-accurate updates, and high-density financial data visualizations.",
     githubUrl: "https://github.com/AryanPatel-AI/TradeSphere",
+    image: "/images/projects/project-ml.jpg",
   },
   vyro: {
     title: "VYRO",
@@ -49,6 +53,7 @@ const PROJECTS_MAP: Record<string, ProjectData> = {
     objective:
       "Transforming fragmented social media management by placing agentic AI models directly into the creator's creative and operational loop.",
     githubUrl: "https://github.com/AryanPatel-AI/VYRO",
+    image: "/images/projects/project-ai.jpg",
   },
   "ai-translator": {
     title: "Live AI Translator PWA",
@@ -67,24 +72,27 @@ const PROJECTS_MAP: Record<string, ProjectData> = {
     objective:
       "Breaking linguistic barriers through a zero-cost serverless architecture accessible instantly on any mobile or desktop browser without app store friction.",
     githubUrl: "https://github.com/AryanPatel-AI/aitranslator-webapp",
+    image: "/images/projects/project-gaming.jpg",
   },
   "speech-to-text-ai": {
-    title: "Speech-to-Text AI Assistant",
-    category: "DEEP LEARNING · HUGGING FACE SPACES",
-    type: "AI Model Microservice",
-    status: "Deployed on Hugging Face",
-    tech: "Docker · Python · PyTorch · Hugging Face SDK",
+    title: "Speech-to-Text AI Assistant (Scribe)",
+    category: "SPEECH AI & NLP · VERCEL PRODUCTION",
+    type: "AI Transcription Web Platform",
+    status: "Live in Production",
+    tech: "Python Flask · Web Speech API · Deep Audio AI · Vercel",
     summary:
-      "Containerized audio processing service leveraging deep speech recognition models to transcribe raw acoustics into punctuated, structured text streams.",
+      "A clean, minimal, and futuristic AI-powered speech-to-text assistant (Scribe by Patel & Co.) that converts spoken audio and recordings into accurate real-time transcriptions online.",
     features: [
-      "Dockerized container pipeline deployed on Hugging Face Spaces for 24/7 availability",
-      "Acoustic noise filtering and multi-speaker transcription tolerance",
-      "API endpoints optimized for programmatic agentic querying and voice assistant integration",
-      "Fast inference optimization with quantised weights for CPU/GPU instances",
+      "Instant Speech-to-Text transcription with real-time audio capture and high-accuracy parsing",
+      "Upload audio files or record voice dynamically with ambient noise handling",
+      "Futuristic dark-mode UI with fluid aurora background dynamics and typing text effects",
+      "History management for past transcription sessions and exportable text outputs",
     ],
     objective:
-      "Providing a resilient, open-source audio understanding endpoint for multi-agent workflows and accessibility-first applications.",
-    githubUrl: "https://github.com/AryanPatel-AI",
+      "Engineered an intuitive, distraction-free voice intelligence platform bridging real-time acoustics and textual cognition for creators, students, and professionals.",
+    githubUrl: "https://github.com/AryanPatel-AI/Speech-to-Text-Assistant",
+    liveUrl: "https://speech-to-text-ai-three.vercel.app/",
+    image: "/images/projects/speech-to-text.png",
   },
   "face-recognition": {
     title: "Neural Biometric Vision",
@@ -103,6 +111,7 @@ const PROJECTS_MAP: Record<string, ProjectData> = {
     objective:
       "Exploring foundational computer vision mechanics and high-performance tensor transformations for real-time security and presence verification.",
     githubUrl: "https://github.com/AryanPatel-AI/FaceRecognition",
+    image: "/images/projects/project-ml.jpg",
   },
   "ai-event-organiser": {
     title: "Full-Stack AI Event Organiser",
@@ -121,6 +130,7 @@ const PROJECTS_MAP: Record<string, ProjectData> = {
     objective:
       "Demonstrating end-to-end full stack competence by synthesizing reactive backend sync, rock-solid security, and modern UI engineering.",
     githubUrl: "https://github.com/AryanPatel-AI/ai-event-organiser",
+    image: "/images/projects/ai-event-hero.png",
   },
 };
 
@@ -232,7 +242,7 @@ export default async function ProjectDetailPage({
 
       {/* Main Container */}
       <main className="max-w-6xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
-        {/* Back Link & GitHub button */}
+        {/* Back Link & GitHub / Live Demo buttons */}
         <div className="flex items-center justify-between mb-8">
           <Link
             href="/work"
@@ -242,15 +252,28 @@ export default async function ProjectDetailPage({
             <span>BACK TO WORK</span>
           </Link>
 
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
-          >
-            <span>View on GitHub</span>
-            <span>↗</span>
-          </a>
+          <div className="flex items-center gap-2.5">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-1 rounded-full border border-[#211e19] bg-[#211e19] !text-[#f8eddb] text-[10px] font-semibold tracking-wider hover:bg-[#433527] hover:border-[#433527] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+              >
+                <span>Launch Live App</span>
+                <span>↗</span>
+              </a>
+            )}
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+            >
+              <span>View on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
         </div>
 
         {/* Project Header */}
@@ -285,6 +308,19 @@ export default async function ProjectDetailPage({
                 <span className="text-[#77573a]">Stack</span>
                 <span className="text-[#211e19] font-medium text-right ml-4">{project.tech}</span>
               </div>
+              {project.liveUrl && (
+                <div className="flex justify-between border-b border-[rgba(91,68,43,0.15)] pb-2">
+                  <span className="text-[#77573a]">Live Link</span>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#806648] font-semibold hover:text-[#211e19] transition-colors truncate max-w-[200px]"
+                  >
+                    Launch Demo ↗
+                  </a>
+                </div>
+              )}
               <div className="flex justify-between pt-1">
                 <span className="text-[#77573a]">Author</span>
                 <a
@@ -300,8 +336,47 @@ export default async function ProjectDetailPage({
           </div>
         </div>
 
+        {/* Live Interface Preview Banner */}
+        {project.image && (
+          <div className="my-10 bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-xl overflow-hidden shadow-xs">
+            <div className="px-4 py-2.5 bg-[#f0e4d2] border-b border-[rgba(91,68,43,0.15)] flex items-center justify-between">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#d68a7a]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#e8c87e]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#8fb89c]" />
+              </div>
+              <span className="text-[10px] tracking-wider text-[#77573a] font-mono">
+                {project.liveUrl ? project.liveUrl.replace(/^https?:\/\//, "").replace(/\/$/, "") : "production-interface"}
+              </span>
+              {project.liveUrl ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-[#806648] font-semibold hover:text-[#211e19] transition-colors inline-flex items-center gap-1"
+                >
+                  <span>Open Live App</span>
+                  <span>↗</span>
+                </a>
+              ) : (
+                <span className="text-[10px] text-[#b49368]">Interface</span>
+              )}
+            </div>
+            <div className="relative aspect-16/9 w-full bg-[#121217]">
+              <Image
+                src={project.image}
+                alt={`${project.title} Interface Preview`}
+                fill
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="object-cover object-top"
+                priority
+              />
+            </div>
+          </div>
+        )}
+
         {/* Key Features & Details */}
-        <div className="py-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="py-10 grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="bg-[#fcf7ee] p-8 border border-[rgba(91,68,43,0.18)] rounded-xl shadow-xs">
             <h3 className="text-sm font-semibold tracking-[0.2em] text-[#806648] uppercase mb-5">
               Key Architectural Features
@@ -328,20 +403,33 @@ export default async function ProjectDetailPage({
 
             <div className="p-5 border border-[rgba(91,68,43,0.18)] bg-[#f0e4d2] rounded-lg">
               <span className="text-[10px] tracking-[0.2em] text-[#806648] uppercase block mb-2 font-semibold">
-                Profile Verification
+                Deployment &amp; Verification
               </span>
               <p className="text-xs text-[#554739] leading-relaxed">
-                Source code, continuous commits, and technical documentation are hosted on Aryan Patel&apos;s GitHub repository.
+                Live deployment and full source code with continuous development history are hosted on Vercel and GitHub.
               </p>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
-              >
-                <span>Inspect repository code on GitHub</span>
-                <span>→</span>
-              </a>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1 rounded-full border border-[#211e19] bg-[#211e19] !text-[#f8eddb] text-[10px] font-semibold tracking-wider hover:bg-[#433527] hover:border-[#433527] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+                  >
+                    <span>Launch Live App</span>
+                    <span>↗</span>
+                  </a>
+                )}
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+                >
+                  <span>Inspect on GitHub</span>
+                  <span>→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
