@@ -57,8 +57,10 @@ export default function PhotographyPage() {
       category: "Portraits",
       caption:
         "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
-      src: "/images/portrait/kashmir-mountain-escape.jpg",
+      src: "/images/portrait/kashmir-mountain-escape-original.jpg",
       aspect: "portrait",
+      aspectRatio: "3 / 4",
+      objectFit: "contain",
       camera: "Mountain Expedition · Kashmir Series",
       credit: "@___aryan___patel",
       instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
@@ -69,8 +71,10 @@ export default function PhotographyPage() {
       category: "Portraits",
       caption:
         "A Good Blood Will Never Cheat, A Bad Blood Will Never Be Loyal — Capturing timeless poise, historic fort stone, and regal ambiance at Chittorgarh, Rajasthan.",
-      src: "/images/portrait/chittorgarh-heritage-portrait.jpg",
+      src: "/images/portrait/chittorgarh-heritage-portrait-original.jpg",
       aspect: "portrait",
+      aspectRatio: "3 / 4",
+      objectFit: "contain",
       camera: "Field Capture · Rajasthan Heritage",
       credit: "@___aryan___patel",
       instagramUrl: "https://www.instagram.com/p/Decf_W-zsGN/",
@@ -83,6 +87,8 @@ export default function PhotographyPage() {
         "Letting the mountains rewrite my story — Natural light portrait captured with Canon optics amidst the high-altitude tranquility of Sonmarg, Kashmir.",
       src: "/images/portrait/sonmarg-mountain-portrait-original.jpg",
       aspect: "portrait",
+      aspectRatio: "3 / 4",
+      objectFit: "contain",
       camera: "Canon EOS · Sonmarg High Altitude",
       credit: "@___aryan___patel",
       instagramUrl: "https://www.instagram.com/p/DN8HhbGj6f9/",
@@ -118,7 +124,8 @@ export default function PhotographyPage() {
       caption:
         "Natural ambient daylight portrait captured amidst lush botanical foliage and soft natural bokeh.",
       src: "/images/portrait/my-garden-portrait.JPG",
-      aspect: "portrait",
+      aspect: "landscape",
+      aspectRatio: "2170 / 1448",
       camera: "Natural Light · Field Capture",
       credit: "@___aryan___patel",
       instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -530,9 +537,10 @@ export default function PhotographyPage() {
           </span>
         </div>
 
-        {/* Gallery Grid (Portraits in proper vertical frames, Landscapes in wide frames) */}
+        {/* Gallery Grid (All Portraits in uniform 3:4 aspect ratio, Landscapes in wide frames) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 items-start">
           {filteredPhotos.map((photo, index) => {
+            const isPortraitCategory = photo.category === "Portraits";
             const isPortraitAspect = photo.aspect === "portrait";
 
             return (
@@ -559,23 +567,33 @@ export default function PhotographyPage() {
                   </span>
                 </div>
 
-                {/* Photo Image Frame: Natural actual aspect ratio without artificial letterbox padding or clipping */}
+                {/* Photo Image Frame: Exact 3:4 aspect ratio for portraits, respects original ratio when specified (e.g. Sunlit Foliage) */}
                 <div
                   className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center ${
                     photo.aspectRatio
                       ? ""
-                      : isPortraitAspect
+                      : isPortraitCategory || isPortraitAspect
                       ? "aspect-[3/4]"
                       : "aspect-[16/10]"
                   }`}
-                  style={photo.aspectRatio ? { aspectRatio: photo.aspectRatio } : undefined}
+                  style={
+                    photo.aspectRatio
+                      ? { aspectRatio: photo.aspectRatio }
+                      : isPortraitCategory || isPortraitAspect
+                      ? { aspectRatio: "3 / 4" }
+                      : undefined
+                  }
                 >
                   <Image
                     src={photo.src}
                     alt={photo.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className={photo.objectFit === "contain" ? "object-contain" : "object-cover"}
+                    className={
+                      photo.objectFit === "contain"
+                        ? "object-contain"
+                        : "object-cover object-center"
+                    }
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 text-white pointer-events-none">
                     <span className="text-[10px] tracking-widest uppercase font-medium">

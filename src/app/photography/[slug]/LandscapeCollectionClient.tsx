@@ -33,19 +33,34 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
     title: "Portraits & Human Nuance",
     subtitle:
       "Environmental and studio portraiture observing expression, natural shadows, and character across heritage corridors and studio environments.",
-    heroSrc: "/images/portrait/aryan-pillared-court.jpg",
-    heroAlt: "Aryan Patel standing in a heritage pillared corridor",
+    heroSrc: "/images/portrait/kashmir-mountain-escape-original.jpg",
+    heroAlt: "Aryan Patel environmental portrait in Kashmir Valley",
     handle: "@___aryan___patel",
     photos: [
+      {
+        id: "kashmir-mountain-escape",
+        title: "Where Mountains Call — Kashmir Valley",
+        caption:
+          "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
+        src: "/images/portrait/kashmir-mountain-escape-original.jpg",
+        alt: "Aryan Patel portrait amidst Kashmir mountain valley and pine ridges",
+        aspect: "aspect-[3/4]",
+        aspectRatio: "3 / 4",
+        objectFit: "contain",
+        isHero: true,
+        credit: "@___aryan___patel",
+        camera: "Mountain Expedition · Kashmir Series",
+        instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
+      },
       {
         id: "chittorgarh-heritage-portrait",
         title: "Loyalty & Heritage — Chittorgarh",
         caption:
           "A Good Blood Will Never Cheat, A Bad Blood Will Never Be Loyal — Capturing timeless poise, historic fort stone, and regal ambiance at Chittorgarh, Rajasthan.",
-        src: "/images/portrait/chittorgarh-heritage-portrait.jpg",
+        src: "/images/portrait/chittorgarh-heritage-portrait-original.jpg",
         alt: "Aryan Patel environmental portrait study at Chittorgarh fort",
         aspect: "aspect-[3/4]",
-        aspectRatio: "1440 / 1921",
+        aspectRatio: "3 / 4",
         objectFit: "contain",
         credit: "@___aryan___patel",
         camera: "Field Capture · Rajasthan Heritage",
@@ -59,25 +74,11 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         src: "/images/portrait/sonmarg-mountain-portrait-original.jpg",
         alt: "Aryan Patel natural light portrait in Sonmarg, Kashmir",
         aspect: "aspect-[3/4]",
-        aspectRatio: "1440 / 1919",
+        aspectRatio: "3 / 4",
         objectFit: "contain",
         credit: "@___aryan___patel",
         camera: "Canon EOS · Sonmarg High Altitude",
         instagramUrl: "https://www.instagram.com/p/DN8HhbGj6f9/",
-      },
-      {
-        id: "kashmir-mountain-escape",
-        title: "Where Mountains Call — Kashmir Valley",
-        caption:
-          "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
-        src: "/images/portrait/kashmir-mountain-escape.jpg",
-        alt: "Aryan Patel portrait amidst Kashmir mountain valley and pine ridges",
-        aspect: "aspect-[3/4]",
-        aspectRatio: "1440 / 1799",
-        isHero: true,
-        credit: "@___aryan___patel",
-        camera: "Mountain Expedition · Kashmir Series",
-        instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
       },
       {
         id: "aryan-pillared-court",
@@ -86,8 +87,7 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
           "Aryan Patel framed within the rhythmic stone pillars and soft ambient shadows of a Rajasthan heritage colonnade.",
         src: "/images/portrait/aryan-pillared-court.jpg",
         alt: "Aryan Patel in heritage pillared court",
-        aspect: "aspect-[2/3]",
-        isHero: true,
+        aspect: "aspect-[3/4]",
         credit: "@___aryan___patel",
         camera: "Canon EOS 200D II · Adobe Lightroom",
         instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -99,7 +99,7 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
           "Aryan Patel portrait study with warm directional key lighting highlighting composure and expression.",
         src: "/images/portrait/aryan-final.jpg",
         alt: "Aryan Patel studio portrait with warm lighting",
-        aspect: "aspect-[2/3]",
+        aspect: "aspect-[3/4]",
         credit: "@___aryan___patel",
         camera: "Canon EOS 200D II · 50mm Prime · RAW",
         instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -112,6 +112,7 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         src: "/images/portrait/my-garden-portrait.JPG",
         alt: "Portrait with sunlit greenery and natural background",
         aspect: "aspect-[3/2]",
+        aspectRatio: "2170 / 1448",
         credit: "@___aryan___patel",
         camera: "Natural Ambient Light · Field Capture",
         instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -123,7 +124,7 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
           "Open-air travel perspective along the highway capturing movement, freedom, and distant horizon lines.",
         src: "/images/portrait/my-road-portrait.jpg",
         alt: "Portrait on an open highway road under soft daylight",
-        aspect: "aspect-[2/3]",
+        aspect: "aspect-[3/4]",
         credit: "@___aryan___patel",
         camera: "Ambient Daylight · Travel Series",
         instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -561,7 +562,8 @@ export default function LandscapeCollectionClient({
             {/* Photo Cards Grid: Respects portrait and landscape aspect ratios */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-start">
               {photos.map((photo, idx) => {
-                const isPortrait = photo.aspect.includes("2/3") || photo.aspect.includes("3/4") || photo.aspect.includes("9/16");
+                const isPortraitCategory = slug === "portraits";
+                const isPortraitAspect = photo.aspect.includes("2/3") || photo.aspect.includes("3/4") || photo.aspect.includes("9/16");
 
                 return (
                   <div
@@ -587,22 +589,33 @@ export default function LandscapeCollectionClient({
                       </span>
                     </div>
 
-                    {/* Image Container: Uses natural aspect ratio without artificial cropping */}
+                    {/* Image Container: Exact 3:4 for portraits, respects original ratio when specified (e.g. Sunlit Foliage) */}
                     <div
-                      className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center ${photo.aspectRatio
-                        ? ""
-                        : isPortrait
+                      className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center ${
+                        photo.aspectRatio
+                          ? ""
+                          : isPortraitCategory || isPortraitAspect
                           ? "aspect-[3/4]"
                           : "aspect-[16/10]"
-                        }`}
-                      style={photo.aspectRatio ? { aspectRatio: photo.aspectRatio } : undefined}
+                      }`}
+                      style={
+                        photo.aspectRatio
+                          ? { aspectRatio: photo.aspectRatio }
+                          : isPortraitCategory || isPortraitAspect
+                          ? { aspectRatio: "3 / 4" }
+                          : undefined
+                      }
                     >
                       <Image
                         src={photo.src}
                         alt={photo.alt}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className={photo.objectFit === "contain" ? "object-contain" : "object-cover"}
+                        className={
+                          photo.objectFit === "contain"
+                            ? "object-contain"
+                            : "object-cover object-center"
+                        }
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 text-white pointer-events-none">
                         <span className="text-[10px] tracking-widest uppercase font-sans">
