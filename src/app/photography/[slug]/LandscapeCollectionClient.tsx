@@ -85,18 +85,6 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         instagramUrl: "https://www.instagram.com/___aryan___patel/",
       },
       {
-        id: "jaipur-vibe-portrait",
-        title: "Wake Up & Vibe — Jaipur Heritage",
-        caption:
-          "Wake up and let the vibe speak — Environmental portrait study blending Rajasthan's majestic Jaipur heritage architecture with contemporary character and ambient light.",
-        src: "/images/portrait/jaipur-vibe-portrait.jpg",
-        alt: "Aryan Patel portrait amidst majestic Jaipur heritage architecture",
-        aspect: "aspect-[2/3]",
-        credit: "@___aryan___patel",
-        camera: "Ambient Daylight · Jaipur Diaries",
-        instagramUrl: "https://www.instagram.com/p/De_8tShBI-o/",
-      },
-      {
         id: "chittorgarh-heritage-portrait",
         title: "Loyalty & Heritage — Chittorgarh",
         caption:

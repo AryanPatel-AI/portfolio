@@ -36,9 +36,12 @@ test("GET /api/photos returns single combined stream", async () => {
   assert.equal(data.mode, "combined-chronological-stream");
   assert.ok(data.data.length >= 12);
 
+  const sonmarg = data.data.find((p) => p.title.includes("Sonmarg"));
+  assert.ok(sonmarg, "Must include Sonmarg portrait");
+  assert.equal(sonmarg.instagramUrl, "https://www.instagram.com/p/DN8HhbGj6f9/");
+
   const jaipur = data.data.find((p) => p.title.includes("Jaipur Heritage"));
-  assert.ok(jaipur, "Must include Jaipur Heritage portrait");
-  assert.equal(jaipur.instagramUrl, "https://www.instagram.com/p/De_8tShBI-o/");
+  assert.equal(jaipur, undefined, "Jaipur Heritage portrait must be removed per user request");
 
   const chittor = data.data.find((p) => p.title.includes("Chittorgarh"));
   assert.ok(chittor, "Must include Chittorgarh portrait");

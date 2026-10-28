@@ -24,7 +24,7 @@ export default function PhotographyPage() {
     {
       title: "Portraits & Human Nuance",
       slug: "portraits",
-      count: "8 Curated Works",
+      count: "7 Curated Works",
       cover: "/images/portrait/aryan-pillared-court.jpg",
       desc: "Environmental portraiture observing expression, natural shadows, and character across heritage corridors.",
       handle: "@___aryan___patel",
@@ -98,18 +98,6 @@ export default function PhotographyPage() {
       instagramUrl: "https://www.instagram.com/___aryan___patel/",
     },
     {
-      id: "jaipur-vibe-portrait",
-      title: "Wake Up & Vibe — Jaipur Heritage",
-      category: "Portraits",
-      caption:
-        "Wake up and let the vibe speak — Environmental portrait study blending Rajasthan's majestic Jaipur heritage architecture with contemporary character and ambient light.",
-      src: "/images/portrait/jaipur-vibe-portrait.jpg",
-      aspect: "portrait",
-      camera: "Ambient Daylight · Jaipur Diaries",
-      credit: "@___aryan___patel",
-      instagramUrl: "https://www.instagram.com/p/De_8tShBI-o/",
-    },
-    {
       id: "chittorgarh-heritage-portrait",
       title: "Loyalty & Heritage — Chittorgarh",
       category: "Portraits",
@@ -168,8 +156,8 @@ export default function PhotographyPage() {
       src: "/images/photography/my-kashmir.jpg",
       aspect: "portrait",
       camera: "Canon EOS 200D II · Mountain Ridge",
-      credit: "@click_by_aryan",
-      instagramUrl: "https://www.instagram.com/click_by_aryan/",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
     },
     {
       id: "mountain-fort-ridge",
@@ -507,11 +495,10 @@ export default function PhotographyPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1 rounded-full transition-all duration-200 cursor-pointer text-[10px] font-semibold tracking-wider ${
-                  activeCategory === cat
+                className={`px-3 py-1 rounded-full transition-all duration-200 cursor-pointer text-[10px] font-semibold tracking-wider ${activeCategory === cat
                     ? "bg-[#211e19] !text-[#f8eddb] border border-[#211e19] shadow-xs"
                     : "border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] shadow-2xs"
-                }`}
+                  }`}
               >
                 {cat === "All"
                   ? "All Frames"
@@ -560,9 +547,8 @@ export default function PhotographyPage() {
 
                 {/* Photo Image Frame: Natural actual aspect ratio without cropping or zoom */}
                 <div
-                  className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center p-2 ${
-                    isPortraitAspect ? "aspect-[3/4]" : "aspect-[16/10]"
-                  }`}
+                  className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center p-2 ${isPortraitAspect ? "aspect-[3/4]" : "aspect-[16/10]"
+                    }`}
                 >
                   <Image
                     src={photo.src}
