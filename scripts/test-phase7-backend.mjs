@@ -34,7 +34,7 @@ test("GET /api/photos returns single combined stream", async () => {
   const data = await res.json();
   assert.equal(data.success, true);
   assert.equal(data.mode, "combined-chronological-stream");
-  assert.ok(data.data.length >= 8);
+  assert.ok(data.data.length >= 12);
 
   const jaipur = data.data.find((p) => p.title.includes("Jaipur Heritage"));
   assert.ok(jaipur, "Must include Jaipur Heritage portrait");
@@ -43,6 +43,10 @@ test("GET /api/photos returns single combined stream", async () => {
   const chittor = data.data.find((p) => p.title.includes("Chittorgarh"));
   assert.ok(chittor, "Must include Chittorgarh portrait");
   assert.equal(chittor.instagramUrl, "https://www.instagram.com/p/Decf_W-zsGN/");
+
+  const amber = data.data.find((p) => p.title.includes("Amber Fort"));
+  assert.ok(amber, "Must include Amber Fort landscape");
+  assert.equal(amber.instagramUrl, "https://www.instagram.com/p/DeZHehET-Pg/");
 });
 
 test("GET /api/linkedin/highlights returns 3 social proof highlights", async () => {

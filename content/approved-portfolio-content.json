@@ -221,7 +221,7 @@
         "title": "Heritage Colonnade Editorial",
         "location": "Historic Court",
         "category": "Editorial Portrait",
-        "instagramUrl": "https://www.instagram.com/click_by_aryan/"
+        "instagramUrl": "https://www.instagram.com/___aryan___patel/"
       },
       {
         "src": "/images/portrait/jaipur-vibe-portrait.jpg",
@@ -250,6 +250,34 @@
         "location": "Sonmarg, Kashmir",
         "category": "Portrait",
         "instagramUrl": "https://www.instagram.com/p/DN8HhbGj6f9/"
+      },
+      {
+        "src": "/images/photography/landscapes/chasing-lights-ferris-wheel.jpg",
+        "title": "Chasing Lights — Ferris Wheel at Dusk",
+        "location": "Bareilly, Uttar Pradesh",
+        "category": "Landscape",
+        "instagramUrl": "https://www.instagram.com/p/DKbKCfJzfAx/"
+      },
+      {
+        "src": "/images/photography/landscapes/chittorgarh-sunset-ruins.jpg",
+        "title": "Centuries in Quiet — Chittorgarh Fort Sunset",
+        "location": "Chittorgarh Fort, Rajasthan",
+        "category": "Landscape",
+        "instagramUrl": "https://www.instagram.com/p/DeguOu4TFFN/"
+      },
+      {
+        "src": "/images/photography/landscapes/amber-fort-frames-of-history.jpg",
+        "title": "Frames of History — Amber Fort",
+        "location": "Amber Fort, Jaipur, Rajasthan",
+        "category": "Landscape",
+        "instagramUrl": "https://www.instagram.com/p/DeZHehET-Pg/"
+      },
+      {
+        "src": "/images/photography/landscapes/jaigarh-fort-aravallis.jpg",
+        "title": "Above the Aravallis — Jaigarh Fort",
+        "location": "Jaigarh Fort, Rajasthan",
+        "category": "Landscape",
+        "instagramUrl": "https://www.instagram.com/p/DetJNgmzmRn/"
       }
     ]
   },

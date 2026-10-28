@@ -32,7 +32,7 @@ export default function PhotographyPage() {
     {
       title: "Mountain Ridges & Dal Lake",
       slug: "landscapes",
-      count: "7 Works",
+      count: "10 Curated Works",
       cover: "/images/photography/Dal_Lake.jpeg",
       desc: "High-altitude Himalayan mountain vistas, Dal Lake shikaras, and mist-laden pine valleys.",
       handle: "@click_by_aryan",
@@ -58,8 +58,8 @@ export default function PhotographyPage() {
       src: "/images/portrait/aryan-pillared-court.jpg",
       aspect: "portrait",
       camera: "Canon EOS 200D II · Adobe Lightroom",
-      credit: "@click_by_aryan & @___aryan___patel",
-      instagramUrl: "https://www.instagram.com/click_by_aryan/",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/___aryan___patel/",
     },
     {
       id: "aryan-final-portrait",
@@ -206,6 +206,54 @@ export default function PhotographyPage() {
       camera: "Golden Hour · Silhouette Exposure",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
+    },
+    {
+      id: "chasing-lights-ferris-wheel",
+      title: "Chasing Lights — Ferris Wheel at Dusk",
+      category: "Landscapes",
+      caption:
+        "Chasing lights and childhood dreams 🎡✨ — High-exposure evening capture of a glowing carnival ferris wheel illuminating dusk skies in Bareilly.",
+      src: "/images/photography/landscapes/chasing-lights-ferris-wheel.jpg",
+      aspect: "portrait",
+      camera: "OnePlus · Night Street Optics",
+      credit: "@click_by_aryan",
+      instagramUrl: "https://www.instagram.com/p/DKbKCfJzfAx/",
+    },
+    {
+      id: "chittorgarh-sunset-ruins",
+      title: "Centuries in Quiet — Chittorgarh Fort Sunset",
+      category: "Landscapes",
+      caption:
+        "Sitting in the quiet presence of centuries gone by.. 🍂 — Golden hour sun rays descending over the timeless stone battlements and historic ramparts of Chittorgarh Fort.",
+      src: "/images/photography/landscapes/chittorgarh-sunset-ruins.jpg",
+      aspect: "portrait",
+      camera: "Canon EOS · Chittorgarh Sunset",
+      credit: "@click_by_aryan",
+      instagramUrl: "https://www.instagram.com/p/DeguOu4TFFN/",
+    },
+    {
+      id: "amber-fort-frames-of-history",
+      title: "Frames of History — Amber Fort",
+      category: "Landscapes",
+      caption:
+        "Frames of history — Historic arched stone windows framing scenic vistas across Amber Fort's rugged mountain battlements and royal Rajasthan terrain.",
+      src: "/images/photography/landscapes/amber-fort-frames-of-history.jpg",
+      aspect: "landscape",
+      camera: "Canon EOS · Amber Fort Panoramas",
+      credit: "@click_by_aryan",
+      instagramUrl: "https://www.instagram.com/p/DeZHehET-Pg/",
+    },
+    {
+      id: "jaigarh-fort-aravallis",
+      title: "Above the Aravallis — Jaigarh Fort",
+      category: "Landscapes",
+      caption:
+        "Where history rises above the Aravallis ✨🏰 — Grand defensive fort ramparts and watchtowers standing proudly along the rugged Aravalli mountain crests.",
+      src: "/images/photography/landscapes/jaigarh-fort-aravallis.jpg",
+      aspect: "landscape",
+      camera: "Canon EOS · Jaigarh Ridge Aperture",
+      credit: "@click_by_aryan",
+      instagramUrl: "https://www.instagram.com/p/DetJNgmzmRn/",
     },
 
     // --- HERITAGE & ARCHITECTURE ---
@@ -510,19 +558,20 @@ export default function PhotographyPage() {
                   </span>
                 </div>
 
-                {/* Photo Image Frame: Portrait frames use aspect-[3/4] for natural vertical framing! */}
+                {/* Photo Image Frame: Natural actual aspect ratio without cropping or zoom */}
                 <div
-                  className={`relative w-full overflow-hidden bg-[#e4d5be] ${isPortraitAspect ? "aspect-[3/4]" : "aspect-[16/10]"
-                    }`}
+                  className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center p-2 ${
+                    isPortraitAspect ? "aspect-[3/4]" : "aspect-[16/10]"
+                  }`}
                 >
                   <Image
                     src={photo.src}
                     alt={photo.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="object-contain"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 text-white pointer-events-none">
                     <span className="text-[10px] tracking-widest uppercase font-medium">
                       Expand Full View ⤢
                     </span>
@@ -543,22 +592,51 @@ export default function PhotographyPage() {
                     </p>
                   </div>
 
-                  {/* Metadata & Direct Link */}
-                  <div className="pt-3 border-t border-[rgba(91,68,43,0.12)] flex items-center justify-between">
-                    <span className="text-[10px] text-[#806648] font-mono">
+                  {/* Metadata & Direct Links */}
+                  <div className="pt-3 border-t border-[rgba(91,68,43,0.12)] flex items-center justify-between gap-2">
+                    <span className="text-[10px] text-[#806648] font-mono truncate max-w-[120px]">
                       {photo.camera}
                     </span>
-                    <a
-                      href={photo.instagramUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
-                      aria-label={`View post on Instagram`}
-                    >
-                      <span>{photo.instagramUrl.includes("/p/") ? "View Post" : photo.credit.includes("@___aryan___patel") ? "@___aryan___patel" : "@click_by_aryan"}</span>
-                      <span>↗</span>
-                    </a>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      {photo.credit.includes("@___aryan___patel") ? (
+                        <a
+                          href="https://www.instagram.com/___aryan___patel/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="px-2.5 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                          aria-label="View @___aryan___patel profile on Instagram"
+                        >
+                          <span>@___aryan___patel</span>
+                          <span>↗</span>
+                        </a>
+                      ) : (
+                        <a
+                          href="https://www.instagram.com/click_by_aryan/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="px-2.5 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                          aria-label="View @click_by_aryan profile on Instagram"
+                        >
+                          <span>@click_by_aryan</span>
+                          <span>↗</span>
+                        </a>
+                      )}
+                      {photo.instagramUrl.includes("/p/") && (
+                        <a
+                          href={photo.instagramUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="px-2.5 py-1 rounded-full border border-[rgba(180,147,104,0.4)] bg-[#f0e4d2] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                          aria-label={`View ${photo.title} post on Instagram`}
+                        >
+                          <span>Post</span>
+                          <span>↗</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -649,9 +727,30 @@ export default function PhotographyPage() {
                     <span className="text-[#77573a]">Optics</span>
                     <span className="text-[#211e19] font-medium">{activePhoto.camera}</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span className="text-[#77573a]">Attribution</span>
-                    <span className="text-[#211e19] font-medium">{activePhoto.credit}</span>
+                    <div className="flex items-center gap-2">
+                      {activePhoto.credit.includes("@___aryan___patel") && (
+                        <a
+                          href="https://www.instagram.com/___aryan___patel/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#211e19] font-medium underline underline-offset-2 hover:text-[#b49368] transition-colors"
+                        >
+                          @___aryan___patel ↗
+                        </a>
+                      )}
+                      {activePhoto.credit.includes("@click_by_aryan") && (
+                        <a
+                          href="https://www.instagram.com/click_by_aryan/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#211e19] font-medium underline underline-offset-2 hover:text-[#b49368] transition-colors"
+                        >
+                          @click_by_aryan ↗
+                        </a>
+                      )}
+                    </div>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#77573a]">Orientation</span>
@@ -664,15 +763,39 @@ export default function PhotographyPage() {
 
               {/* Bottom Actions */}
               <div className="pt-6 border-t border-[rgba(91,68,43,0.15)] flex items-center justify-between gap-3">
-                <a
-                  href={activePhoto.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
-                >
-                  <span>Open Instagram Post</span>
-                  <span>↗</span>
-                </a>
+                <div className="flex items-center gap-2">
+                  {activePhoto.instagramUrl.includes("/p/") ? (
+                    <a
+                      href={activePhoto.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[11px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+                    >
+                      <span>Open Instagram Post</span>
+                      <span>↗</span>
+                    </a>
+                  ) : activePhoto.credit.includes("@___aryan___patel") ? (
+                    <a
+                      href="https://www.instagram.com/___aryan___patel/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[11px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+                    >
+                      <span>Open @___aryan___patel</span>
+                      <span>↗</span>
+                    </a>
+                  ) : (
+                    <a
+                      href="https://www.instagram.com/click_by_aryan/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[11px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
+                    >
+                      <span>Open @click_by_aryan</span>
+                      <span>↗</span>
+                    </a>
+                  )}
+                </div>
 
                 <button
                   onClick={() => setLightboxIndex(null)}

@@ -44,9 +44,9 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         alt: "Aryan Patel in heritage pillared court",
         aspect: "aspect-[2/3]",
         isHero: true,
-        credit: "@click_by_aryan & @___aryan___patel",
+        credit: "@___aryan___patel",
         camera: "Canon EOS 200D II · Adobe Lightroom",
-        instagramUrl: "https://www.instagram.com/click_by_aryan/",
+        instagramUrl: "https://www.instagram.com/___aryan___patel/",
       },
       {
         id: "aryan-final-portrait",
@@ -273,6 +273,54 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         credit: "@click_by_aryan",
         camera: "Golden Hour · Silhouette Exposure",
         instagramUrl: "https://www.instagram.com/click_by_aryan/",
+      },
+      {
+        id: "chasing-lights-ferris-wheel",
+        title: "Chasing Lights — Ferris Wheel at Dusk",
+        caption:
+          "Chasing lights and childhood dreams 🎡✨ — High-exposure evening capture of a glowing carnival ferris wheel illuminating dusk skies in Bareilly.",
+        src: "/images/photography/landscapes/chasing-lights-ferris-wheel.jpg",
+        alt: "Illuminated carnival ferris wheel glowing against deep twilight sky",
+        aspect: "aspect-[3/4]",
+        credit: "@click_by_aryan",
+        camera: "OnePlus · Night Street Optics",
+        instagramUrl: "https://www.instagram.com/p/DKbKCfJzfAx/",
+      },
+      {
+        id: "chittorgarh-sunset-ruins",
+        title: "Centuries in Quiet — Chittorgarh Fort Sunset",
+        caption:
+          "Sitting in the quiet presence of centuries gone by.. 🍂 — Golden hour sun rays descending over the timeless stone battlements and historic ramparts of Chittorgarh Fort.",
+        src: "/images/photography/landscapes/chittorgarh-sunset-ruins.jpg",
+        alt: "Historic Chittorgarh Fort stone ruins and battlements bathed in golden sunset light",
+        aspect: "aspect-[3/4]",
+        credit: "@click_by_aryan",
+        camera: "Canon EOS · Chittorgarh Sunset",
+        instagramUrl: "https://www.instagram.com/p/DeguOu4TFFN/",
+      },
+      {
+        id: "amber-fort-frames-of-history",
+        title: "Frames of History — Amber Fort",
+        caption:
+          "Frames of history — Historic arched stone windows framing scenic vistas across Amber Fort's rugged mountain battlements and royal Rajasthan terrain.",
+        src: "/images/photography/landscapes/amber-fort-frames-of-history.jpg",
+        alt: "Arched stone fortification frame looking out over Amber Fort and mountain terrain",
+        aspect: "aspect-[16/10]",
+        credit: "@click_by_aryan",
+        camera: "Canon EOS · Amber Fort Panoramas",
+        instagramUrl: "https://www.instagram.com/p/DeZHehET-Pg/",
+      },
+      {
+        id: "jaigarh-fort-aravallis",
+        title: "Above the Aravallis — Jaigarh Fort",
+        caption:
+          "Where history rises above the Aravallis ✨🏰 — Grand defensive fort ramparts and watchtowers standing proudly along the rugged Aravalli mountain crests.",
+        src: "/images/photography/landscapes/jaigarh-fort-aravallis.jpg",
+        alt: "Defensive fort walls and watchtowers stretching along the rugged Aravalli hill ridges",
+        aspect: "aspect-[16/10]",
+        credit: "@click_by_aryan",
+        camera: "Canon EOS · Jaigarh Ridge Aperture",
+        instagramUrl: "https://www.instagram.com/p/DetJNgmzmRn/",
       },
     ],
   },
@@ -565,9 +613,9 @@ export default function LandscapeCollectionClient({
                       </span>
                     </div>
 
-                    {/* Image Container with Proper Aspect Ratio */}
+                    {/* Image Container: Uses object-contain without cropping or zoom */}
                     <div
-                      className={`relative w-full overflow-hidden bg-[#e4d5be] ${
+                      className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center p-2 ${
                         isPortrait ? "aspect-[3/4]" : "aspect-[16/10]"
                       }`}
                     >
@@ -576,9 +624,9 @@ export default function LandscapeCollectionClient({
                         alt={photo.alt}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        className="object-contain"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 text-white">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 text-white pointer-events-none">
                         <span className="text-[10px] tracking-widest uppercase font-sans">
                           Expand ⤢
                         </span>
@@ -600,24 +648,49 @@ export default function LandscapeCollectionClient({
                       </div>
 
                       <div className="pt-3 border-t border-[rgba(91,68,43,0.12)] flex items-center justify-between text-[10px]">
-                        <span className="text-[#806648] font-mono truncate max-w-[130px]">
+                        <span className="text-[#806648] font-mono truncate max-w-[120px]">
                           {photo.camera}
                         </span>
-                        <div className="flex items-center gap-1.5">
-                          {photo.instagramUrl && (
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          {photo.credit?.includes("@___aryan___patel") ? (
+                            <a
+                              href="https://www.instagram.com/___aryan___patel/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="px-2.5 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                              aria-label="View @___aryan___patel profile on Instagram"
+                            >
+                              <span>@___aryan___patel</span>
+                              <span>↗</span>
+                            </a>
+                          ) : (
+                            <a
+                              href="https://www.instagram.com/click_by_aryan/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="px-2.5 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                              aria-label="View @click_by_aryan profile on Instagram"
+                            >
+                              <span>@click_by_aryan</span>
+                              <span>↗</span>
+                            </a>
+                          )}
+                          {photo.instagramUrl && photo.instagramUrl.includes("/p/") && (
                             <a
                               href={photo.instagramUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="px-2.5 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                              className="px-2.5 py-1 rounded-full border border-[rgba(180,147,104,0.4)] bg-[#f0e4d2] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
                               aria-label={`View ${photo.title} post on Instagram`}
                             >
-                              <span>{photo.instagramUrl.includes("/p/") ? "View Post" : "Instagram"}</span>
+                              <span>Post</span>
                               <span>↗</span>
                             </a>
                           )}
-                          <span className="px-2.5 py-1 rounded-full border border-[rgba(91,68,43,0.2)] bg-transparent text-[#554739] text-[10px] font-semibold tracking-wider hover:bg-[rgba(91,68,43,0.08)] transition-all inline-flex items-center gap-1">
+                          <span className="px-2 py-1 rounded-full border border-[rgba(91,68,43,0.2)] bg-transparent text-[#554739] text-[10px] font-semibold tracking-wider hover:bg-[rgba(91,68,43,0.08)] transition-all inline-flex items-center gap-1">
                             <span>Inspect</span>
                             <span className="group-hover:translate-x-0.5 transition-transform">→</span>
                           </span>
@@ -782,9 +855,30 @@ export default function LandscapeCollectionClient({
               <p className="font-light tracking-wide text-[#f5ede0]">
                 {activePhoto.caption}
               </p>
-              <p className="text-[10px] font-mono text-[#a89d8f] mt-0.5">
-                {activePhoto.camera} · {activePhoto.credit}
-              </p>
+              <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono text-[#a89d8f] mt-1">
+                <span>{activePhoto.camera}</span>
+                <span>•</span>
+                {activePhoto.credit?.includes("@___aryan___patel") && (
+                  <a
+                    href="https://www.instagram.com/___aryan___patel/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#f5ede0] underline hover:text-[#b49368] transition-colors"
+                  >
+                    @___aryan___patel ↗
+                  </a>
+                )}
+                {activePhoto.credit?.includes("@click_by_aryan") && (
+                  <a
+                    href="https://www.instagram.com/click_by_aryan/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#f5ede0] underline hover:text-[#b49368] transition-colors"
+                  >
+                    @click_by_aryan ↗
+                  </a>
+                )}
+              </div>
             </div>
             <div className="flex items-center gap-3 sm:gap-4 text-[10px] tracking-widest uppercase font-mono text-[#8c8274]">
               {activePhoto.instagramUrl && (
