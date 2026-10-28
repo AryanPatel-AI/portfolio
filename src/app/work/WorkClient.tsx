@@ -352,7 +352,7 @@ export default function WorkPage() {
                       href={p.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1 rounded-full border border-[#211e19] bg-[#211e19] !text-[#f8eddb] text-[10px] font-semibold tracking-wider hover:bg-[#433527] hover:border-[#433527] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                      className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
                       aria-label={`Visit live demo for ${p.title}`}
                     >
                       <span>Live Demo</span>
