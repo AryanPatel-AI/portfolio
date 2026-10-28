@@ -14,6 +14,46 @@ interface SocialProfile {
 
 export default function ContactPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formFeedback, setFormFeedback] = useState("");
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+    setFormFeedback("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setFormStatus("error");
+        setFormFeedback(
+          data.errors?.join(" ") ||
+          data.error ||
+          "Failed to dispatch message. Please try again or use direct email."
+        );
+      } else {
+        setFormStatus("success");
+        setFormFeedback(data.message || "Thank you! Your message has been received.");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      }
+    } catch {
+      setFormStatus("error");
+      setFormFeedback("Network connection error. Please verify your connection or email directly.");
+    }
+  };
 
   const socialProfiles: SocialProfile[] = [
     {
@@ -233,37 +273,37 @@ export default function ContactPage() {
 
       {/* Main Content Area */}
       <main className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 xl:px-14 py-12 sm:py-16 lg:py-20 w-full flex-1">
-        {/* 1. Contact Introduction & Email Card */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center pb-14 sm:pb-18 border-b border-[rgba(91,68,43,0.18)]">
-          {/* Left: Contact Text */}
-          <div className="lg:col-span-6 xl:col-span-6">
-            <span className="text-[10.5px] sm:text-[11px] font-semibold tracking-[0.26em] text-[#b49368] uppercase mb-3.5 block flex items-center gap-2.5">
-              <span className="w-4 h-px bg-[#b49368]" aria-hidden="true" />
-              LET’S CONNECT
-            </span>
-            <h1 className="font-['Playfair_Display'] text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-normal leading-[1.08] tracking-tight text-[#211e19] mb-4 sm:mb-6">
-              Get In Touch
-            </h1>
-            <p className="text-sm sm:text-base lg:text-lg text-[#6d6559] leading-relaxed font-sans font-light max-w-xl">
-              Feel free to reach out for collaborations, projects, photography,
-              gaming or just to say hello!
-            </p>
-          </div>
+        {/* 1. Contact Introduction, Direct Dispatch Form & Email Card */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-start pb-14 sm:pb-18 border-b border-[rgba(91,68,43,0.18)]">
+          {/* Left: Contact Text & Direct Email Card */}
+          <div className="lg:col-span-6 xl:col-span-5 flex flex-col gap-6">
+            <div>
+              <span className="text-[10.5px] sm:text-[11px] font-semibold tracking-[0.26em] text-[#b49368] uppercase mb-3.5 block flex items-center gap-2.5">
+                <span className="w-4 h-px bg-[#b49368]" aria-hidden="true" />
+                LET’S CONNECT
+              </span>
+              <h1 className="font-['Playfair_Display'] text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-normal leading-[1.08] tracking-tight text-[#211e19] mb-4 sm:mb-6">
+                Get In Touch
+              </h1>
+              <p className="text-sm sm:text-base text-[#6d6559] leading-relaxed font-sans font-light max-w-xl">
+                Feel free to reach out for collaborations, projects, photography commissions,
+                gaming or just to say hello! Use the interactive dispatch form or send a direct email.
+              </p>
+            </div>
 
-          {/* Right: Email Contact Card - Auto-Adjustable Width & Alignment */}
-          <div className="lg:col-span-6 xl:col-span-6 flex justify-start lg:justify-end w-full">
+            {/* Email Contact Card */}
             <a
               href="mailto:aryan.btai2023019@invertisuniversity.ac.in"
-              className="group relative block w-full max-w-full lg:max-w-[500px] xl:max-w-[540px] p-5 sm:p-7 xl:p-8 bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-xl shadow-xs hover:-translate-y-1.5 hover:shadow-[0_10px_25px_rgba(91,68,43,0.12)] hover:border-[rgba(180,147,104,0.4)] transition-all duration-300"
+              className="group relative block w-full p-5 sm:p-6 bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-xl shadow-xs hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(91,68,43,0.12)] hover:border-[rgba(180,147,104,0.4)] transition-all duration-300"
             >
-              <div className="flex items-start justify-between gap-3 mb-4 sm:mb-5">
-                <span className="text-[9.5px] sm:text-[10px] tracking-[0.22em] uppercase font-semibold text-[#806648] flex items-center gap-1.5">
-                  <span className="text-[#b49368]">◆</span> DIRECT INQUIRY
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <span className="text-[9.5px] tracking-[0.22em] uppercase font-semibold text-[#806648] flex items-center gap-1.5">
+                  <span className="text-[#b49368]">◆</span> DIRECT INBOX
                 </span>
-                <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[rgba(91,68,43,0.22)] bg-[#f0e4d2] flex items-center justify-center text-[#77573a] group-hover:text-[#211e19] group-hover:border-[#b49368] transition-colors shrink-0">
+                <span className="w-8 h-8 rounded-full border border-[rgba(91,68,43,0.22)] bg-[#f0e4d2] flex items-center justify-center text-[#77573a] group-hover:text-[#211e19] group-hover:border-[#b49368] transition-colors shrink-0">
                   <svg
                     viewBox="0 0 24 24"
-                    className="w-4 h-4 sm:w-5 sm:h-5"
+                    className="w-4 h-4"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.8"
@@ -277,18 +317,18 @@ export default function ContactPage() {
                 </span>
               </div>
 
-              <div className="mb-4 sm:mb-5">
-                <span className="text-[10px] sm:text-[11px] text-[#77573a] font-medium uppercase tracking-wider block mb-1">
+              <div className="mb-3">
+                <span className="text-[10px] text-[#77573a] font-medium uppercase tracking-wider block mb-0.5">
                   University &amp; Professional Dispatch
                 </span>
-                <div className="font-['Playfair_Display'] text-[14.5px] sm:text-[16.5px] md:text-lg lg:text-[15px] xl:text-[18px] 2xl:text-[19px] font-medium text-[#211e19] group-hover:text-[#b49368] transition-colors break-all sm:break-normal tracking-tight">
+                <div className="font-['Playfair_Display'] text-[15px] sm:text-[17px] font-medium text-[#211e19] group-hover:text-[#b49368] transition-colors break-all tracking-tight">
                   aryan.btai2023019@invertisuniversity.ac.in
                 </div>
               </div>
 
-              <div className="pt-3.5 sm:pt-4 border-t border-[rgba(91,68,43,0.15)] flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-[rgba(91,68,43,0.15)] flex items-center justify-between text-xs">
                 <span className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5">
-                  <span>Send Email</span>
+                  <span>Send Direct Email</span>
                   <span className="group-hover:translate-x-1 transition-transform duration-200">
                     →
                   </span>
@@ -298,6 +338,145 @@ export default function ContactPage() {
                 </span>
               </div>
             </a>
+          </div>
+
+          {/* Right: Interactive Message Dispatch Form */}
+          <div className="lg:col-span-6 xl:col-span-7 w-full">
+            <div className="p-6 sm:p-8 bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-xl shadow-xs">
+              <div className="flex items-center justify-between gap-3 mb-5 pb-4 border-b border-[rgba(91,68,43,0.12)]">
+                <div>
+                  <span className="text-[9.5px] tracking-[0.22em] uppercase font-semibold text-[#806648] flex items-center gap-1.5 mb-1">
+                    <span className="w-2 h-2 rounded-full bg-[#b49368]" />
+                    INTERACTIVE DISPATCH
+                  </span>
+                  <h2 className="font-['Playfair_Display'] text-xl sm:text-2xl text-[#211e19]">
+                    Send a Message
+                  </h2>
+                </div>
+                <span className="px-2.5 py-1 rounded-full text-[9px] font-mono uppercase tracking-wider bg-[#f0e4d2] text-[#6b553e] border border-[rgba(91,68,43,0.15)]">
+                  Rate-Protected
+                </span>
+              </div>
+
+              {formFeedback && (
+                <div
+                  className={`mb-5 p-4 rounded-lg text-xs leading-relaxed border ${
+                    formStatus === "success"
+                      ? "bg-[#e8f3e8] text-[#1e4620] border-[#9ec89e]"
+                      : "bg-[#fbeaea] text-[#6e1e1e] border-[#e8a5a5]"
+                  }`}
+                  role="alert"
+                >
+                  <p className="font-semibold mb-0.5">
+                    {formStatus === "success" ? "Message Dispatched" : "Notice"}
+                  </p>
+                  <p>{formFeedback}</p>
+                </div>
+              )}
+
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="contact-name"
+                      className="block text-[11px] font-medium uppercase tracking-wider text-[#634e38] mb-1.5"
+                    >
+                      Your Name *
+                    </label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      required
+                      placeholder="e.g. Maya Sharma"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      disabled={formStatus === "submitting"}
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#f8eddb] border border-[rgba(91,68,43,0.2)] text-xs text-[#211e19] placeholder-[#9f8973] focus:outline-none focus:border-[#b49368] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-[11px] font-medium uppercase tracking-wider text-[#634e38] mb-1.5"
+                    >
+                      Your Email *
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      required
+                      placeholder="e.g. maya@company.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      disabled={formStatus === "submitting"}
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#f8eddb] border border-[rgba(91,68,43,0.2)] text-xs text-[#211e19] placeholder-[#9f8973] focus:outline-none focus:border-[#b49368] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-subject"
+                    className="block text-[11px] font-medium uppercase tracking-wider text-[#634e38] mb-1.5"
+                  >
+                    Subject
+                  </label>
+                  <input
+                    id="contact-subject"
+                    type="text"
+                    placeholder="e.g. AI Collaboration / Photography Commission"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    disabled={formStatus === "submitting"}
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#f8eddb] border border-[rgba(91,68,43,0.2)] text-xs text-[#211e19] placeholder-[#9f8973] focus:outline-none focus:border-[#b49368] transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-[11px] font-medium uppercase tracking-wider text-[#634e38] mb-1.5"
+                  >
+                    Message *
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    required
+                    rows={4}
+                    placeholder="Tell me about your idea, project, or inquiry..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    disabled={formStatus === "submitting"}
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#f8eddb] border border-[rgba(91,68,43,0.2)] text-xs text-[#211e19] placeholder-[#9f8973] focus:outline-none focus:border-[#b49368] transition-colors resize-y"
+                  />
+                </div>
+
+                <div className="flex items-center justify-between pt-2">
+                  <span className="text-[10px] text-[#806648] font-mono">
+                    Protected by sliding-window rate limiting
+                  </span>
+
+                  <button
+                    type="submit"
+                    disabled={formStatus === "submitting"}
+                    className="px-5 py-2.5 rounded-full bg-[#211e19] text-[#f8eddb] text-[11px] font-semibold tracking-wider hover:bg-[#3d3227] disabled:opacity-50 transition-all duration-200 inline-flex items-center gap-2 cursor-pointer shadow-xs"
+                  >
+                    {formStatus === "submitting" ? (
+                      <>
+                        <span className="w-3 h-3 rounded-full border-2 border-[#f8eddb] border-t-transparent animate-spin" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <span>→</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </section>
 

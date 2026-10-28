@@ -7,7 +7,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "test": "node scripts/verify-readiness.mjs"
+    "test:backend": "node scripts/test-image-config.mjs && node scripts/test-rate-limit.mjs && node scripts/test-contact-api.mjs && node scripts/test-github-stats.mjs && node scripts/test-telemetry.mjs",
+    "test": "npm run test:backend && node scripts/verify-readiness.mjs"
   },
   "dependencies": {
     "next": "16.4.3",
