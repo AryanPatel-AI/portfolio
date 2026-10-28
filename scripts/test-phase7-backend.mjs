@@ -117,4 +117,8 @@ test("Verify all portraits are credited strictly to @___aryan___patel and not cl
   // Ensure LandscapeCollectionClient has portraits collection handle @___aryan___patel
   assert.ok(landscapeClient.includes('portraits: {\n    title: "Portraits & Human Nuance"'));
   assert.ok(landscapeClient.includes('handle: "@___aryan___patel"'));
+
+  // Ensure no duplicate Aryan portrait in landscapes
+  assert.ok(!photoClient.includes('src: "/images/photography/my-kashmir.jpg"'));
+  assert.ok(!landscapeClient.includes('src: "/images/photography/my-kashmir.jpg"'));
 });

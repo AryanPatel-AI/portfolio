@@ -11,6 +11,8 @@ export interface PhotoItem {
   src: string;
   alt: string;
   aspect: string;
+  aspectRatio?: string;
+  objectFit?: "cover" | "contain";
   isHero?: boolean;
   credit?: string;
   camera?: string;
@@ -35,6 +37,48 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
     heroAlt: "Aryan Patel standing in a heritage pillared corridor",
     handle: "@___aryan___patel",
     photos: [
+      {
+        id: "chittorgarh-heritage-portrait",
+        title: "Loyalty & Heritage — Chittorgarh",
+        caption:
+          "A Good Blood Will Never Cheat, A Bad Blood Will Never Be Loyal — Capturing timeless poise, historic fort stone, and regal ambiance at Chittorgarh, Rajasthan.",
+        src: "/images/portrait/chittorgarh-heritage-portrait.jpg",
+        alt: "Aryan Patel environmental portrait study at Chittorgarh fort",
+        aspect: "aspect-[3/4]",
+        aspectRatio: "1440 / 1921",
+        objectFit: "contain",
+        credit: "@___aryan___patel",
+        camera: "Field Capture · Rajasthan Heritage",
+        instagramUrl: "https://www.instagram.com/p/Decf_W-zsGN/",
+      },
+      {
+        id: "sonmarg-mountain-portrait",
+        title: "Mountain Story — Sonmarg Portrait",
+        caption:
+          "Letting the mountains rewrite my story — Natural light portrait captured with Canon optics amidst the high-altitude tranquility of Sonmarg, Kashmir.",
+        src: "/images/portrait/sonmarg-mountain-portrait-original.jpg",
+        alt: "Aryan Patel natural light portrait in Sonmarg, Kashmir",
+        aspect: "aspect-[3/4]",
+        aspectRatio: "1440 / 1919",
+        objectFit: "contain",
+        credit: "@___aryan___patel",
+        camera: "Canon EOS · Sonmarg High Altitude",
+        instagramUrl: "https://www.instagram.com/p/DN8HhbGj6f9/",
+      },
+      {
+        id: "kashmir-mountain-escape",
+        title: "Where Mountains Call — Kashmir Valley",
+        caption:
+          "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
+        src: "/images/portrait/kashmir-mountain-escape.jpg",
+        alt: "Aryan Patel portrait amidst Kashmir mountain valley and pine ridges",
+        aspect: "aspect-[3/4]",
+        aspectRatio: "1440 / 1919",
+        objectFit: "contain",
+        credit: "@___aryan___patel",
+        camera: "Mountain Expedition · Kashmir Series",
+        instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
+      },
       {
         id: "aryan-pillared-court",
         title: "Pillared Heritage Corridor",
@@ -67,7 +111,7 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
           "Natural ambient daylight portrait captured amidst lush botanical foliage and soft natural bokeh.",
         src: "/images/portrait/my-garden-portrait.JPG",
         alt: "Portrait with sunlit greenery and natural background",
-        aspect: "aspect-[3/4]",
+        aspect: "aspect-[3/2]",
         credit: "@___aryan___patel",
         camera: "Natural Ambient Light · Field Capture",
         instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -83,42 +127,6 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         credit: "@___aryan___patel",
         camera: "Ambient Daylight · Travel Series",
         instagramUrl: "https://www.instagram.com/___aryan___patel/",
-      },
-      {
-        id: "chittorgarh-heritage-portrait",
-        title: "Loyalty & Heritage — Chittorgarh",
-        caption:
-          "A Good Blood Will Never Cheat, A Bad Blood Will Never Be Loyal — Capturing timeless poise, historic fort stone, and regal ambiance at Chittorgarh, Rajasthan.",
-        src: "/images/portrait/chittorgarh-heritage-portrait.jpg",
-        alt: "Aryan Patel environmental portrait study at Chittorgarh fort",
-        aspect: "aspect-[2/3]",
-        credit: "@___aryan___patel",
-        camera: "Field Capture · Rajasthan Heritage",
-        instagramUrl: "https://www.instagram.com/p/Decf_W-zsGN/",
-      },
-      {
-        id: "kashmir-mountain-escape",
-        title: "Where Mountains Call — Kashmir Valley",
-        caption:
-          "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
-        src: "/images/portrait/kashmir-mountain-escape.jpg",
-        alt: "Aryan Patel portrait amidst Kashmir mountain valley and pine ridges",
-        aspect: "aspect-[2/3]",
-        credit: "@___aryan___patel",
-        camera: "Mountain Expedition · Kashmir Series",
-        instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
-      },
-      {
-        id: "sonmarg-mountain-portrait",
-        title: "Mountain Story — Sonmarg Portrait",
-        caption:
-          "Letting the mountains rewrite my story — Natural light portrait captured with Canon optics amidst the high-altitude tranquility of Sonmarg, Kashmir.",
-        src: "/images/portrait/sonmarg-mountain-portrait.jpg",
-        alt: "Aryan Patel natural light portrait in Sonmarg, Kashmir",
-        aspect: "aspect-[2/3]",
-        credit: "@___aryan___patel",
-        camera: "Canon EOS · Sonmarg High Altitude",
-        instagramUrl: "https://www.instagram.com/p/DN8HhbGj6f9/",
       },
     ],
   },
@@ -167,18 +175,6 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         camera: "Monochrome Tonal Grading",
         instagramUrl: "https://www.instagram.com/click_by_aryan/",
       },
-      {
-        id: "mountain-fort-ridge",
-        title: "High Fort Bastion Ramparts",
-        caption:
-          "Dramatic stone fortress walls winding along rugged mountain crests under overcast atmospheric skies.",
-        src: "/images/photography/landscapes/mountain-fort-ridge.jpg",
-        alt: "Mountain fort with ramparts perched high atop a rugged mountain ridge",
-        aspect: "aspect-[16/10]",
-        credit: "@click_by_aryan",
-        camera: "High Altitude Bastion View",
-        instagramUrl: "https://www.instagram.com/click_by_aryan/",
-      },
     ],
   },
   landscapes: {
@@ -200,18 +196,6 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         isHero: true,
         credit: "@click_by_aryan",
         camera: "Canon EOS 200D II · Adobe Lightroom",
-        instagramUrl: "https://www.instagram.com/click_by_aryan/",
-      },
-      {
-        id: "kashmir-pines-ridge",
-        title: "Himalayan Ridge & Pine Canopies",
-        caption:
-          "Sweeping high-altitude mountain panorama with misty blue ridges and dense evergreen pine forests in Kashmir.",
-        src: "/images/photography/my-kashmir.jpg",
-        alt: "High-altitude mountain overlook across pine trees and misty mountain ranges",
-        aspect: "aspect-[9/16]",
-        credit: "@click_by_aryan",
-        camera: "Canon EOS 200D II · Pine Valley Ridge",
         instagramUrl: "https://www.instagram.com/click_by_aryan/",
       },
       {
@@ -603,18 +587,22 @@ export default function LandscapeCollectionClient({
                       </span>
                     </div>
 
-                    {/* Image Container: Uses object-contain without cropping or zoom */}
+                    {/* Image Container: Uses natural aspect ratio without artificial cropping */}
                     <div
-                      className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center p-2 ${
-                        isPortrait ? "aspect-[3/4]" : "aspect-[16/10]"
-                      }`}
+                      className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center ${photo.aspectRatio
+                        ? ""
+                        : isPortrait
+                          ? "aspect-[3/4]"
+                          : "aspect-[16/10]"
+                        }`}
+                      style={photo.aspectRatio ? { aspectRatio: photo.aspectRatio } : undefined}
                     >
                       <Image
                         src={photo.src}
                         alt={photo.alt}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-contain"
+                        className={photo.objectFit === "contain" ? "object-contain" : "object-cover"}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 text-white pointer-events-none">
                         <span className="text-[10px] tracking-widest uppercase font-sans">

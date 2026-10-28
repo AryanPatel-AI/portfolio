@@ -11,6 +11,8 @@ interface GalleryPhoto {
   caption: string;
   src: string;
   aspect: "portrait" | "landscape";
+  aspectRatio?: string;
+  objectFit?: "cover" | "contain";
   camera: string;
   credit: string;
   instagramUrl: string;
@@ -24,15 +26,15 @@ export default function PhotographyPage() {
     {
       title: "Portraits & Human Nuance",
       slug: "portraits",
-      count: "7 Curated Works",
-      cover: "/images/portrait/aryan-pillared-court.jpg",
+      count: "8 Curated Works",
+      cover: "/images/portrait/jaipur-vibe-portrait.jpg",
       desc: "Environmental portraiture observing expression, natural shadows, and character across heritage corridors.",
       handle: "@___aryan___patel",
     },
     {
       title: "Mountain Ridges & Dal Lake",
       slug: "landscapes",
-      count: "10 Curated Works",
+      count: "9 Curated Works",
       cover: "/images/photography/Dal_Lake.jpeg",
       desc: "High-altitude Himalayan mountain vistas, Dal Lake shikaras, and mist-laden pine valleys.",
       handle: "@click_by_aryan",
@@ -40,7 +42,7 @@ export default function PhotographyPage() {
     {
       title: "Sandstone Domes & Sacred Heritage",
       slug: "heritage",
-      count: "Curated Series",
+      count: "3 Curated Works",
       cover: "/images/photography/my-temple.jpg",
       desc: "Ancient sandstone bastions, sacred temple sanctums, and timeless architectural geometry across India.",
       handle: "@click_by_aryan",
@@ -50,6 +52,62 @@ export default function PhotographyPage() {
   const photos: GalleryPhoto[] = [
     // --- PORTRAITS ---
     {
+      id: "jaipur-vibe-portrait",
+      title: "Wake Up & Vibe — Jaipur Heritage",
+      category: "Portraits",
+      caption:
+        "Wake up and vibe ☕✨ — Capturing morning calm, heritage archways, and warm ambient glow at Jaipur, Rajasthan.",
+      src: "/images/portrait/jaipur-vibe-portrait.jpg",
+      aspect: "portrait",
+      aspectRatio: "1440 / 1920",
+      objectFit: "contain",
+      camera: "Field Capture · Jaipur Heritage",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/De_8tShBI-o/",
+    },
+    {
+      id: "chittorgarh-heritage-portrait",
+      title: "Loyalty & Heritage — Chittorgarh",
+      category: "Portraits",
+      caption:
+        "A Good Blood Will Never Cheat, A Bad Blood Will Never Be Loyal — Capturing timeless poise, historic fort stone, and regal ambiance at Chittorgarh, Rajasthan.",
+      src: "/images/portrait/chittorgarh-heritage-portrait.jpg",
+      aspect: "portrait",
+      aspectRatio: "1440 / 1921",
+      objectFit: "contain",
+      camera: "Field Capture · Rajasthan Heritage",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/Decf_W-zsGN/",
+    },
+    {
+      id: "sonmarg-mountain-portrait",
+      title: "Mountain Story — Sonmarg Portrait",
+      category: "Portraits",
+      caption:
+        "Letting the mountains rewrite my story — Natural light portrait captured with Canon optics amidst the high-altitude tranquility of Sonmarg, Kashmir.",
+      src: "/images/portrait/sonmarg-mountain-portrait.jpg",
+      aspect: "portrait",
+      aspectRatio: "1440 / 1919",
+      objectFit: "contain",
+      camera: "Canon EOS · Sonmarg High Altitude",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/DN8HhbGj6f9/",
+    },
+    {
+      id: "kashmir-mountain-escape",
+      title: "Where Mountains Call — Kashmir Valley",
+      category: "Portraits",
+      caption:
+        "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
+      src: "/images/portrait/kashmir-mountain-escape.jpg",
+      aspect: "portrait",
+      aspectRatio: "1440 / 1799",
+      objectFit: "contain",
+      camera: "Mountain Expedition · Kashmir Series",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
+    },
+    {
       id: "aryan-pillared-court",
       title: "Pillared Heritage Corridor",
       category: "Portraits",
@@ -57,6 +115,7 @@ export default function PhotographyPage() {
         "Aryan Patel framed within the rhythmic stone pillars and soft ambient shadows of a Rajasthan heritage colonnade.",
       src: "/images/portrait/aryan-pillared-court.jpg",
       aspect: "portrait",
+      aspectRatio: "2046 / 3072",
       camera: "Canon EOS 200D II · Adobe Lightroom",
       credit: "@___aryan___patel",
       instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -69,6 +128,7 @@ export default function PhotographyPage() {
         "Aryan Patel portrait study with warm directional key lighting highlighting composure and expression.",
       src: "/images/portrait/aryan-final.jpg",
       aspect: "portrait",
+      aspectRatio: "4000 / 6000",
       camera: "Canon EOS 200D II · 50mm Prime · RAW",
       credit: "@___aryan___patel",
       instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -80,7 +140,8 @@ export default function PhotographyPage() {
       caption:
         "Natural ambient daylight portrait captured amidst lush botanical foliage and soft natural bokeh.",
       src: "/images/portrait/my-garden-portrait.JPG",
-      aspect: "portrait",
+      aspect: "landscape",
+      aspectRatio: "2170 / 1448",
       camera: "Natural Light · Field Capture",
       credit: "@___aryan___patel",
       instagramUrl: "https://www.instagram.com/___aryan___patel/",
@@ -93,45 +154,10 @@ export default function PhotographyPage() {
         "Open-air travel perspective along the highway capturing movement, freedom, and distant horizon lines.",
       src: "/images/portrait/my-road-portrait.jpg",
       aspect: "portrait",
+      aspectRatio: "682 / 1024",
       camera: "Ambient Daylight · Travel Series",
       credit: "@___aryan___patel",
       instagramUrl: "https://www.instagram.com/___aryan___patel/",
-    },
-    {
-      id: "chittorgarh-heritage-portrait",
-      title: "Loyalty & Heritage — Chittorgarh",
-      category: "Portraits",
-      caption:
-        "A Good Blood Will Never Cheat, A Bad Blood Will Never Be Loyal — Capturing timeless poise, historic fort stone, and regal ambiance at Chittorgarh, Rajasthan.",
-      src: "/images/portrait/chittorgarh-heritage-portrait.jpg",
-      aspect: "portrait",
-      camera: "Field Capture · Rajasthan Heritage",
-      credit: "@___aryan___patel",
-      instagramUrl: "https://www.instagram.com/p/Decf_W-zsGN/",
-    },
-    {
-      id: "kashmir-mountain-escape",
-      title: "Where Mountains Call — Kashmir Valley",
-      category: "Portraits",
-      caption:
-        "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
-      src: "/images/portrait/kashmir-mountain-escape.jpg",
-      aspect: "portrait",
-      camera: "Mountain Expedition · Kashmir Series",
-      credit: "@___aryan___patel",
-      instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
-    },
-    {
-      id: "sonmarg-mountain-portrait",
-      title: "Mountain Story — Sonmarg Portrait",
-      category: "Portraits",
-      caption:
-        "Letting the mountains rewrite my story — Natural light portrait captured with Canon optics amidst the high-altitude tranquility of Sonmarg, Kashmir.",
-      src: "/images/portrait/sonmarg-mountain-portrait.jpg",
-      aspect: "portrait",
-      camera: "Canon EOS · Sonmarg High Altitude",
-      credit: "@___aryan___patel",
-      instagramUrl: "https://www.instagram.com/p/DN8HhbGj6f9/",
     },
 
     // --- LANDSCAPES ---
@@ -143,21 +169,23 @@ export default function PhotographyPage() {
         "Traditional wooden shikaras and houseboats resting peacefully on the glassy reflective surface of Dal Lake, Srinagar.",
       src: "/images/photography/Dal_Lake.jpeg",
       aspect: "landscape",
+      aspectRatio: "1086 / 724",
       camera: "Canon EOS 200D II · Adobe Lightroom",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
     },
     {
-      id: "kashmir-pines-ridge",
-      title: "Himalayan Ridge & Pine Canopies",
+      id: "mountain-valley-vista",
+      title: "High Mountain Valley Vista",
       category: "Landscapes",
       caption:
-        "Sweeping high-altitude mountain panorama with misty blue ridges and dense evergreen pine forests in Kashmir.",
-      src: "/images/photography/my-kashmir.jpg",
-      aspect: "portrait",
-      camera: "Canon EOS 200D II · Mountain Ridge",
-      credit: "@___aryan___patel",
-      instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
+        "Sweeping high-altitude mountain panorama with misty blue ranges and pine canopy in Kashmir Valley.",
+      src: "/images/photography/landscapes/mountain-valley-vista.jpg",
+      aspect: "landscape",
+      aspectRatio: "1024 / 768",
+      camera: "Mountain Vista Panoramic",
+      credit: "@click_by_aryan",
+      instagramUrl: "https://www.instagram.com/click_by_aryan/",
     },
     {
       id: "mountain-fort-ridge",
@@ -167,6 +195,7 @@ export default function PhotographyPage() {
         "Dramatic stone fortress walls winding along rugged mountain crests under overcast atmospheric skies.",
       src: "/images/photography/landscapes/mountain-fort-ridge.jpg",
       aspect: "landscape",
+      aspectRatio: "1024 / 682",
       camera: "Landscape Aperture · High Altitude",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
@@ -179,6 +208,7 @@ export default function PhotographyPage() {
         "Early dawn reflections and tranquil waters surrounding historic wooden houseboats in Kashmir valley.",
       src: "/images/photography/landscapes/kashmir-lake-houseboats.jpg",
       aspect: "landscape",
+      aspectRatio: "1024 / 682",
       camera: "Low-Light Morning · Reflections",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
@@ -191,6 +221,7 @@ export default function PhotographyPage() {
         "Warm golden hour rays illuminating rooftop silhouettes and tree canopies during sunset.",
       src: "/images/photography/landscapes/sunset-rooftop-dusk.jpg",
       aspect: "landscape",
+      aspectRatio: "1024 / 682",
       camera: "Golden Hour · Silhouette Exposure",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
@@ -203,6 +234,7 @@ export default function PhotographyPage() {
         "Chasing lights and childhood dreams 🎡✨ — High-exposure evening capture of a glowing carnival ferris wheel illuminating dusk skies in Bareilly.",
       src: "/images/photography/landscapes/chasing-lights-ferris-wheel.jpg",
       aspect: "portrait",
+      aspectRatio: "1080 / 1350",
       camera: "OnePlus · Night Street Optics",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/p/DKbKCfJzfAx/",
@@ -215,6 +247,7 @@ export default function PhotographyPage() {
         "Sitting in the quiet presence of centuries gone by.. 🍂 — Golden hour sun rays descending over the timeless stone battlements and historic ramparts of Chittorgarh Fort.",
       src: "/images/photography/landscapes/chittorgarh-sunset-ruins.jpg",
       aspect: "portrait",
+      aspectRatio: "1080 / 1440",
       camera: "Canon EOS · Chittorgarh Sunset",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/p/DeguOu4TFFN/",
@@ -227,6 +260,7 @@ export default function PhotographyPage() {
         "Frames of history — Historic arched stone windows framing scenic vistas across Amber Fort's rugged mountain battlements and royal Rajasthan terrain.",
       src: "/images/photography/landscapes/amber-fort-frames-of-history.jpg",
       aspect: "landscape",
+      aspectRatio: "1080 / 720",
       camera: "Canon EOS · Amber Fort Panoramas",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/p/DeZHehET-Pg/",
@@ -239,6 +273,7 @@ export default function PhotographyPage() {
         "Where history rises above the Aravallis ✨🏰 — Grand defensive fort ramparts and watchtowers standing proudly along the rugged Aravalli mountain crests.",
       src: "/images/photography/landscapes/jaigarh-fort-aravallis.jpg",
       aspect: "landscape",
+      aspectRatio: "1080 / 720",
       camera: "Canon EOS · Jaigarh Ridge Aperture",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/p/DetJNgmzmRn/",
@@ -253,6 +288,7 @@ export default function PhotographyPage() {
         "Ancient carved sandstone pillars and sacred inner sanctum captured with deep tonal fidelity and natural illumination.",
       src: "/images/photography/my-temple.jpg",
       aspect: "portrait",
+      aspectRatio: "4000 / 6000",
       camera: "Canon EOS 200D II · 50mm Lens · RAW",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
@@ -265,6 +301,7 @@ export default function PhotographyPage() {
         "Intricately carved sandstone cupolas of historic Rajasthan palace architecture set against a crisp cyan-teal sky.",
       src: "/images/photography/landscapes/palace-sandstone-domes.jpg",
       aspect: "landscape",
+      aspectRatio: "1024 / 682",
       camera: "Architectural Symmetry · Sandstone",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
@@ -277,6 +314,7 @@ export default function PhotographyPage() {
         "High-contrast black-and-white architectural interior study of filigree brass lamps and vintage ambient illumination.",
       src: "/images/photography/landscapes/vintage-chandelier-lights.jpg",
       aspect: "portrait",
+      aspectRatio: "682 / 1024",
       camera: "Monochrome Tonal Grading",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
@@ -545,17 +583,23 @@ export default function PhotographyPage() {
                   </span>
                 </div>
 
-                {/* Photo Image Frame: Natural actual aspect ratio without cropping or zoom */}
+                {/* Photo Image Frame: Natural actual aspect ratio without artificial letterbox padding or clipping */}
                 <div
-                  className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center p-2 ${isPortraitAspect ? "aspect-[3/4]" : "aspect-[16/10]"
-                    }`}
+                  className={`relative w-full overflow-hidden bg-[#211e19]/5 flex items-center justify-center ${
+                    photo.aspectRatio
+                      ? ""
+                      : isPortraitAspect
+                      ? "aspect-[3/4]"
+                      : "aspect-[16/10]"
+                  }`}
+                  style={photo.aspectRatio ? { aspectRatio: photo.aspectRatio } : undefined}
                 >
                   <Image
                     src={photo.src}
                     alt={photo.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-contain"
+                    className={photo.objectFit === "contain" ? "object-contain" : "object-cover"}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 text-white pointer-events-none">
                     <span className="text-[10px] tracking-widest uppercase font-medium">
