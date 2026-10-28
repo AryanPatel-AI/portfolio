@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "tradesphere",
     "ai-event-organiser",
     "vyro",
-    "ai-translator",
+    "syncora",
     "speech-to-text-ai",
     "face-recognition",
   ];

@@ -4,14 +4,14 @@ import WorkClient from "./WorkClient";
 export const metadata: Metadata = {
   title: "Engineering Portfolio & AI Systems — Aryan Patel",
   description:
-    "Featured AI projects, financial terminals (TradeSphere), real-time speech translation, computer vision pipelines, and verified IBM/LinkedIn certifications by Aryan Patel.",
+    "Featured AI projects, financial terminals (TradeSphere), real-time streaming platforms (Syncora), speech AI assistants, and verified IBM/LinkedIn certifications by Aryan Patel.",
   alternates: {
     canonical: "/work",
   },
   openGraph: {
     title: "Engineering Portfolio & AI Systems | Aryan Patel",
     description:
-      "Featured AI projects, financial terminals (TradeSphere), real-time speech translation, and computer vision pipelines.",
+      "Featured AI projects, financial terminals (TradeSphere), real-time streaming platforms (Syncora), and computer vision pipelines.",
     url: "/work",
     images: [
       {

@@ -53,11 +53,11 @@ const FEATURED_REPOS = [
     lang: "Python",
   },
   {
-    name: "aitranslator-webapp",
-    desc: "Continuous Speech-to-Text & neural translation PWA",
-    stars: 4,
-    forks: 1,
-    lang: "Python",
+    name: "syncora",
+    desc: "Real-time collaborative YouTube watch party & live-stream viewing platform",
+    stars: 6,
+    forks: 2,
+    lang: "TypeScript",
   },
 ];
 
