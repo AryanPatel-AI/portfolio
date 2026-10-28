@@ -24,7 +24,7 @@ export default function PhotographyPage() {
     {
       title: "Portraits & Human Nuance",
       slug: "portraits",
-      count: "4 Curated Works",
+      count: "8 Curated Works",
       cover: "/images/portrait/aryan-pillared-court.jpg",
       desc: "Environmental portraiture observing expression, natural shadows, and character across heritage corridors.",
       handle: "@click_by_aryan & @___aryan___patel",
@@ -96,6 +96,54 @@ export default function PhotographyPage() {
       camera: "Ambient Daylight · Travel Series",
       credit: "@click_by_aryan",
       instagramUrl: "https://www.instagram.com/click_by_aryan/",
+    },
+    {
+      id: "jaipur-vibe-portrait",
+      title: "Wake Up & Vibe — Jaipur Heritage",
+      category: "Portraits",
+      caption:
+        "Wake up and let the vibe speak — Environmental portrait study blending Rajasthan's majestic Jaipur heritage architecture with contemporary character and ambient light.",
+      src: "/images/portrait/jaipur-vibe-portrait.jpg",
+      aspect: "portrait",
+      camera: "Ambient Daylight · Jaipur Diaries",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/De_8tShBI-o/",
+    },
+    {
+      id: "chittorgarh-heritage-portrait",
+      title: "Loyalty & Heritage — Chittorgarh",
+      category: "Portraits",
+      caption:
+        "A Good Blood Will Never Cheat, A Bad Blood Will Never Be Loyal — Capturing timeless poise, historic fort stone, and regal ambiance at Chittorgarh, Rajasthan.",
+      src: "/images/portrait/chittorgarh-heritage-portrait.jpg",
+      aspect: "portrait",
+      camera: "Field Capture · Rajasthan Heritage",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/Decf_W-zsGN/",
+    },
+    {
+      id: "kashmir-mountain-escape",
+      title: "Where Mountains Call — Kashmir Valley",
+      category: "Portraits",
+      caption:
+        "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
+      src: "/images/portrait/kashmir-mountain-escape.jpg",
+      aspect: "portrait",
+      camera: "Mountain Expedition · Kashmir Series",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
+    },
+    {
+      id: "sonmarg-mountain-portrait",
+      title: "Mountain Story — Sonmarg Portrait",
+      category: "Portraits",
+      caption:
+        "Letting the mountains rewrite my story — Natural light portrait captured with Canon optics amidst the high-altitude tranquility of Sonmarg, Kashmir.",
+      src: "/images/portrait/sonmarg-mountain-portrait.jpg",
+      aspect: "portrait",
+      camera: "Canon EOS · Sonmarg High Altitude",
+      credit: "@___aryan___patel",
+      instagramUrl: "https://www.instagram.com/p/DN8HhbGj6f9/",
     },
 
     // --- LANDSCAPES ---
@@ -506,9 +554,10 @@ export default function PhotographyPage() {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1.5"
-                      aria-label={`View ${photo.credit} on Instagram`}
+                      aria-label={`View post on Instagram`}
                     >
-                      {photo.credit.includes("@___aryan___patel") ? "@___aryan___patel ↗" : "@click_by_aryan ↗"}
+                      <span>{photo.instagramUrl.includes("/p/") ? "View Post" : photo.credit.includes("@___aryan___patel") ? "@___aryan___patel" : "@click_by_aryan"}</span>
+                      <span>↗</span>
                     </a>
                   </div>
                 </div>

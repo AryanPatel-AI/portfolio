@@ -84,6 +84,54 @@ const COLLECTIONS: Record<string, CollectionMeta> = {
         camera: "Ambient Daylight · Travel Series",
         instagramUrl: "https://www.instagram.com/click_by_aryan/",
       },
+      {
+        id: "jaipur-vibe-portrait",
+        title: "Wake Up & Vibe — Jaipur Heritage",
+        caption:
+          "Wake up and let the vibe speak — Environmental portrait study blending Rajasthan's majestic Jaipur heritage architecture with contemporary character and ambient light.",
+        src: "/images/portrait/jaipur-vibe-portrait.jpg",
+        alt: "Aryan Patel portrait amidst majestic Jaipur heritage architecture",
+        aspect: "aspect-[2/3]",
+        credit: "@___aryan___patel",
+        camera: "Ambient Daylight · Jaipur Diaries",
+        instagramUrl: "https://www.instagram.com/p/De_8tShBI-o/",
+      },
+      {
+        id: "chittorgarh-heritage-portrait",
+        title: "Loyalty & Heritage — Chittorgarh",
+        caption:
+          "A Good Blood Will Never Cheat, A Bad Blood Will Never Be Loyal — Capturing timeless poise, historic fort stone, and regal ambiance at Chittorgarh, Rajasthan.",
+        src: "/images/portrait/chittorgarh-heritage-portrait.jpg",
+        alt: "Aryan Patel environmental portrait study at Chittorgarh fort",
+        aspect: "aspect-[2/3]",
+        credit: "@___aryan___patel",
+        camera: "Field Capture · Rajasthan Heritage",
+        instagramUrl: "https://www.instagram.com/p/Decf_W-zsGN/",
+      },
+      {
+        id: "kashmir-mountain-escape",
+        title: "Where Mountains Call — Kashmir Valley",
+        caption:
+          "Travel. Breathe. Escape. Where the mountains call and the soul finds peace — Environmental portrait framed by sweeping Himalayan ridges and serene Kashmir vistas.",
+        src: "/images/portrait/kashmir-mountain-escape.jpg",
+        alt: "Aryan Patel portrait amidst Kashmir mountain valley and pine ridges",
+        aspect: "aspect-[2/3]",
+        credit: "@___aryan___patel",
+        camera: "Mountain Expedition · Kashmir Series",
+        instagramUrl: "https://www.instagram.com/p/DZXLiVIjNKg/",
+      },
+      {
+        id: "sonmarg-mountain-portrait",
+        title: "Mountain Story — Sonmarg Portrait",
+        caption:
+          "Letting the mountains rewrite my story — Natural light portrait captured with Canon optics amidst the high-altitude tranquility of Sonmarg, Kashmir.",
+        src: "/images/portrait/sonmarg-mountain-portrait.jpg",
+        alt: "Aryan Patel natural light portrait in Sonmarg, Kashmir",
+        aspect: "aspect-[2/3]",
+        credit: "@___aryan___patel",
+        camera: "Canon EOS · Sonmarg High Altitude",
+        instagramUrl: "https://www.instagram.com/p/DN8HhbGj6f9/",
+      },
     ],
   },
   heritage: {
@@ -552,13 +600,28 @@ export default function LandscapeCollectionClient({
                       </div>
 
                       <div className="pt-3 border-t border-[rgba(91,68,43,0.12)] flex items-center justify-between text-[10px]">
-                        <span className="text-[#806648] font-mono">
+                        <span className="text-[#806648] font-mono truncate max-w-[130px]">
                           {photo.camera}
                         </span>
-                        <span className="px-3 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1">
-                          <span>Inspect</span>
-                          <span className="group-hover:translate-x-0.5 transition-transform">→</span>
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          {photo.instagramUrl && (
+                            <a
+                              href={photo.instagramUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="px-2.5 py-1 rounded-full border border-[rgba(91,68,43,0.3)] bg-[#fcf7ee] !text-[#211e19] text-[10px] font-semibold tracking-wider hover:bg-[#211e19] hover:!text-[#f8eddb] hover:border-[#211e19] transition-all duration-200 shadow-2xs inline-flex items-center gap-1"
+                              aria-label={`View ${photo.title} post on Instagram`}
+                            >
+                              <span>{photo.instagramUrl.includes("/p/") ? "View Post" : "Instagram"}</span>
+                              <span>↗</span>
+                            </a>
+                          )}
+                          <span className="px-2.5 py-1 rounded-full border border-[rgba(91,68,43,0.2)] bg-transparent text-[#554739] text-[10px] font-semibold tracking-wider hover:bg-[rgba(91,68,43,0.08)] transition-all inline-flex items-center gap-1">
+                            <span>Inspect</span>
+                            <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -723,7 +786,18 @@ export default function LandscapeCollectionClient({
                 {activePhoto.camera} · {activePhoto.credit}
               </p>
             </div>
-            <div className="flex items-center gap-4 text-[10px] tracking-widest uppercase font-mono text-[#8c8274]">
+            <div className="flex items-center gap-3 sm:gap-4 text-[10px] tracking-widest uppercase font-mono text-[#8c8274]">
+              {activePhoto.instagramUrl && (
+                <a
+                  href={activePhoto.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1 rounded-full border border-white/30 bg-white/10 text-[#f5ede0] hover:bg-white hover:text-[#100e0c] transition-all inline-flex items-center gap-1 font-sans text-[10px] tracking-wider font-semibold"
+                >
+                  <span>Open Instagram Post</span>
+                  <span>↗</span>
+                </a>
+              )}
               <span>[← PREV]</span>
               <span>[NEXT →]</span>
               <span>[ESC CLOSE]</span>

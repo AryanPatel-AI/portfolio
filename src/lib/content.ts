@@ -32,6 +32,7 @@ export interface PhotoItem {
   title: string;
   location: string;
   category: string;
+  instagramUrl?: string;
 }
 
 export interface GamingHighlight {
@@ -142,6 +143,7 @@ export async function getPhotographyStream(): Promise<PhotoItem[]> {
           title: row.title,
           location: row.location,
           category: row.category,
+          instagramUrl: row.instagram_url || row.instagramUrl,
         }));
       }
     } catch (e) {

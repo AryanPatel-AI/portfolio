@@ -119,7 +119,7 @@ export default function WorkPage() {
       skills: ["Generative AI", "Ethical AI", "Prompt Engineering", "Data Literacy"],
       description:
         "Comprehensive industry credential verifying practical data literacy, generative artificial intelligence workflows, ethical AI frameworks, and computational reasoning.",
-      credentialUrl: "https://www.linkedin.com/in/aryan-patel-ai/details/certifications/",
+      credentialUrl: "https://lnkd.in/p/dWEdSCYv",
     },
     {
       title: "Python 101 for Data Science",
@@ -129,7 +129,7 @@ export default function WorkPage() {
       skills: ["Python", "Pandas", "NumPy", "Data Preprocessing", "Matplotlib"],
       description:
         "Hands-on scientific computing certification covering Python data structures, automated matrix manipulation with NumPy, dataframe wrangling with Pandas, and data visualization.",
-      credentialUrl: "https://www.linkedin.com/in/aryan-patel-ai/details/certifications/",
+      credentialUrl: "https://lnkd.in/p/drmqjd4s",
     },
     {
       title: "LLM For Young Developer",
@@ -139,7 +139,7 @@ export default function WorkPage() {
       skills: ["Large Language Models", "Prompt Chaining", "API Integration", "AI Agents"],
       description:
         "Modern developer credential in architecting applications with Large Language Models (LLMs), prompt engineering, agentic workflows, and neural inference pipelines.",
-      credentialUrl: "https://www.linkedin.com/in/aryan-patel-ai/details/certifications/",
+      credentialUrl: "https://lnkd.in/p/dXRUWDBK",
     },
     {
       title: "Next Gen Technologies",
@@ -150,27 +150,6 @@ export default function WorkPage() {
       description:
         "Certificate of completion awarded for mastering emerging technologies, cloud-native deployments, and advanced computational architectures.",
       credentialUrl: "https://www.linkedin.com/in/aryan-patel-ai/details/certifications/",
-    },
-  ];
-
-  const honorsAndAwards = [
-    {
-      title: "IBM Z Datathon Finalist",
-      issuer: "IBM Enterprise",
-      badge: "Competition Finalist",
-      desc: "Achieved finalist position in the IBM Z Datathon for high-throughput enterprise data architecture.",
-    },
-    {
-      title: "AI-ML Virtual Internship",
-      issuer: "Industry Engineering",
-      badge: "Internship",
-      desc: "Completed hands-on machine learning pipelines, model training, and dataset preprocessing.",
-    },
-    {
-      title: "Excellence in Academics & University Projects",
-      issuer: "Invertis University · B.Tech AI",
-      badge: "Academic Honor",
-      desc: "Nominated for academic excellence and outstanding contributions to departmental AI projects.",
     },
   ];
 
@@ -475,43 +454,6 @@ export default function WorkPage() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Honors & Competitions Strip */}
-          <div className="mt-12 pt-10 border-t border-[rgba(91,68,43,0.15)]">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#b49368]" />
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-[#b49368] uppercase">
-                HONORS &amp; COMPETITIONS
-              </span>
-            </div>
-            <h3 className="font-['Playfair_Display'] text-2xl sm:text-3xl text-[#211e19] mb-6">
-              Leadership &amp; Academic Distinctions
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {honorsAndAwards.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-lg p-5 flex flex-col justify-between shadow-xs hover:border-[rgba(180,147,104,0.4)] hover:-translate-y-1 transition-all duration-200"
-                >
-                  <div>
-                    <span className="px-2 py-0.5 rounded bg-[#f0e4d2] text-[#6b553e] font-mono text-[9px] uppercase tracking-wider block w-fit mb-3 border border-[rgba(91,68,43,0.12)]">
-                      {item.badge}
-                    </span>
-                    <h4 className="font-['Playfair_Display'] text-lg text-[#211e19] mb-1 leading-snug">
-                      {item.title}
-                    </h4>
-                    <span className="text-[11px] font-mono text-[#806648] block mb-2">
-                      {item.issuer}
-                    </span>
-                    <p className="text-xs text-[#554739] font-sans leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* LinkedIn Profile Verification Callout */}

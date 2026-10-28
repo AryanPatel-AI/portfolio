@@ -220,7 +220,36 @@
         "src": "/images/portrait/aryan-pillared-court.jpg",
         "title": "Heritage Colonnade Editorial",
         "location": "Historic Court",
-        "category": "Editorial Portrait"
+        "category": "Editorial Portrait",
+        "instagramUrl": "https://www.instagram.com/click_by_aryan/"
+      },
+      {
+        "src": "/images/portrait/jaipur-vibe-portrait.jpg",
+        "title": "Wake Up & Vibe — Jaipur Heritage",
+        "location": "Jaipur, Rajasthan",
+        "category": "Portrait",
+        "instagramUrl": "https://www.instagram.com/p/De_8tShBI-o/"
+      },
+      {
+        "src": "/images/portrait/chittorgarh-heritage-portrait.jpg",
+        "title": "Loyalty & Heritage — Chittorgarh",
+        "location": "Chittorgarh, Rajasthan",
+        "category": "Portrait",
+        "instagramUrl": "https://www.instagram.com/p/Decf_W-zsGN/"
+      },
+      {
+        "src": "/images/portrait/kashmir-mountain-escape.jpg",
+        "title": "Where Mountains Call — Kashmir Valley",
+        "location": "Kashmir Valley",
+        "category": "Portrait",
+        "instagramUrl": "https://www.instagram.com/p/DZXLiVIjNKg/"
+      },
+      {
+        "src": "/images/portrait/sonmarg-mountain-portrait.jpg",
+        "title": "Mountain Story — Sonmarg Portrait",
+        "location": "Sonmarg, Kashmir",
+        "category": "Portrait",
+        "instagramUrl": "https://www.instagram.com/p/DN8HhbGj6f9/"
       }
     ]
   },

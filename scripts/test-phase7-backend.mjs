@@ -34,7 +34,15 @@ test("GET /api/photos returns single combined stream", async () => {
   const data = await res.json();
   assert.equal(data.success, true);
   assert.equal(data.mode, "combined-chronological-stream");
-  assert.ok(data.data.length > 0);
+  assert.ok(data.data.length >= 8);
+
+  const jaipur = data.data.find((p) => p.title.includes("Jaipur Heritage"));
+  assert.ok(jaipur, "Must include Jaipur Heritage portrait");
+  assert.equal(jaipur.instagramUrl, "https://www.instagram.com/p/De_8tShBI-o/");
+
+  const chittor = data.data.find((p) => p.title.includes("Chittorgarh"));
+  assert.ok(chittor, "Must include Chittorgarh portrait");
+  assert.equal(chittor.instagramUrl, "https://www.instagram.com/p/Decf_W-zsGN/");
 });
 
 test("GET /api/linkedin/highlights returns 3 social proof highlights", async () => {
