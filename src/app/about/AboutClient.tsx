@@ -383,6 +383,119 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        {/* LinkedIn Highlights & Social Proof */}
+        <section className="mt-16 sm:mt-20 pt-12 border-t border-[rgba(91,68,43,0.18)]">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
+            <div>
+              <span className="text-[10.5px] sm:text-[11px] font-semibold tracking-[0.24em] text-[#8c704f] uppercase block mb-2 flex items-center gap-2">
+                <span className="w-3 h-px bg-[#8c704f]" aria-hidden="true" />
+                PROFESSIONAL REFLECTIONS &amp; UPDATES
+              </span>
+              <h2 className="font-['Playfair_Display'] text-2xl sm:text-3xl lg:text-4xl font-normal text-[#211e19]">
+                LinkedIn Highlights
+              </h2>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/aryan-patel-ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold tracking-wider uppercase text-[#77573a] hover:text-[#211e19] inline-flex items-center gap-1.5 transition-colors"
+            >
+              <span>Follow @aryan-patel-ai</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-xl shadow-xs flex flex-col justify-between hover:-translate-y-1 hover:border-[rgba(180,147,104,0.4)] transition-all duration-300">
+              <div>
+                <div className="flex items-center justify-between text-[10px] font-mono text-[#806648] uppercase tracking-wider mb-3">
+                  <span>Project Launch</span>
+                  <span>October 2026</span>
+                </div>
+                <h3 className="font-['Playfair_Display'] text-lg font-medium text-[#211e19] mb-2 leading-snug">
+                  Launching Scribe: Speech-to-Text AI Assistant
+                </h3>
+                <p className="text-xs text-[#554739] leading-relaxed font-sans mb-4">
+                  Announced the production deployment of Scribe, a distraction-free voice-to-text intelligence tool deployed on Vercel and Hugging Face Spaces for real-time acoustic transcription.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#SpeechAI</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#PythonFlask</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#Vercel</span>
+                </div>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/aryan-patel-ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pt-3 border-t border-[rgba(91,68,43,0.12)] text-[11px] font-semibold tracking-wider text-[#211e19] hover:text-[#b49368] inline-flex items-center justify-between transition-colors"
+              >
+                <span>Read on LinkedIn</span>
+                <span>↗</span>
+              </a>
+            </div>
+
+            <div className="p-6 bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-xl shadow-xs flex flex-col justify-between hover:-translate-y-1 hover:border-[rgba(180,147,104,0.4)] transition-all duration-300">
+              <div>
+                <div className="flex items-center justify-between text-[10px] font-mono text-[#806648] uppercase tracking-wider mb-3">
+                  <span>Systems Architecture</span>
+                  <span>October 2026</span>
+                </div>
+                <h3 className="font-['Playfair_Display'] text-lg font-medium text-[#211e19] mb-2 leading-snug">
+                  Engineering Syncora: Real-Time WebSockets
+                </h3>
+                <p className="text-xs text-[#554739] leading-relaxed font-sans mb-4">
+                  Shared architectural insights on building Syncora, focusing on sub-100ms video playback synchronization and resilient WebSocket connection fallbacks across client sessions.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#TypeScript</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#WebSockets</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#Nextjs</span>
+                </div>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/aryan-patel-ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pt-3 border-t border-[rgba(91,68,43,0.12)] text-[11px] font-semibold tracking-wider text-[#211e19] hover:text-[#b49368] inline-flex items-center justify-between transition-colors"
+              >
+                <span>Read on LinkedIn</span>
+                <span>↗</span>
+              </a>
+            </div>
+
+            <div className="p-6 bg-[#fcf7ee] border border-[rgba(91,68,43,0.18)] rounded-xl shadow-xs flex flex-col justify-between hover:-translate-y-1 hover:border-[rgba(180,147,104,0.4)] transition-all duration-300">
+              <div>
+                <div className="flex items-center justify-between text-[10px] font-mono text-[#806648] uppercase tracking-wider mb-3">
+                  <span>Learning Milestone</span>
+                  <span>2026</span>
+                </div>
+                <h3 className="font-['Playfair_Display'] text-lg font-medium text-[#211e19] mb-2 leading-snug">
+                  IBM AI &amp; Data Science Credentials
+                </h3>
+                <p className="text-xs text-[#554739] leading-relaxed font-sans mb-4">
+                  Completed foundational and advanced industry certifications with IBM SkillsBuild covering deep neural network principles, Python scientific computing, and ethical AI deployment.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#IBM</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#ArtificialIntelligence</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#f0e4d2] text-[#4a3d31] font-mono">#DataScience</span>
+                </div>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/aryan-patel-ai/details/certifications/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pt-3 border-t border-[rgba(91,68,43,0.12)] text-[11px] font-semibold tracking-wider text-[#211e19] hover:text-[#b49368] inline-flex items-center justify-between transition-colors"
+              >
+                <span>Verify Credentials</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );

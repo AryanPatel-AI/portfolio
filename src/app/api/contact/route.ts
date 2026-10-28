@@ -1,5 +1,8 @@
 import { checkRateLimit } from "../../../lib/rate-limit.ts";
 import { validateContactPayload } from "../../../lib/validations/contact.ts";
+import { getSupabaseServerClient } from "../../../lib/supabase/server.ts";
+import { sendContactNotification } from "../../../lib/email.ts";
+import { recordMessage } from "../../../lib/messages.ts";
 
 export const dynamic = "force-dynamic";
 
@@ -27,13 +30,23 @@ export async function POST(request: Request) {
     }
 
     // 2. Parse & Validate Payload
-    let body: unknown;
+    let body: any;
     try {
       body = await request.json();
     } catch {
       return Response.json(
         { success: false, errors: ["Invalid JSON payload."] },
         { status: 400 }
+      );
+    }
+
+    // 3. Honeypot check (Bots fill hidden fields)
+    if (body && (body.website || body.honeypot || body.company_url)) {
+      console.warn("[Bot Detected via Honeypot]:", ip);
+      // Return 200 to mislead the bot, but do not process
+      return Response.json(
+        { success: true, message: "Thank you for your submission." },
+        { status: 200 }
       );
     }
 
@@ -46,16 +59,57 @@ export async function POST(request: Request) {
     }
 
     const { name, email, subject, message } = validation.data;
+    const nowIso = new Date().toISOString();
+    const messageId = `msg_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
 
-    // 3. Dispatch / Process Message
-    // In production, configure Resend / SendGrid API or transactional SMTP.
-    console.log(`[Contact Inquiry Received] From: ${name} <${email}> | Subject: ${subject}`);
+    // 4. Send Email Notification via Resend
+    const emailResult = await sendContactNotification({
+      name,
+      email,
+      subject,
+      message,
+    });
+
+    const deliveryStatus = emailResult.dispatched ? "delivered" : "queued";
+
+    // 5. Save to Supabase PostgreSQL (or fallback in-memory)
+    const supabase = getSupabaseServerClient(true);
+    if (supabase) {
+      try {
+        await supabase.from("contact_messages").insert({
+          id: messageId,
+          name,
+          email,
+          subject,
+          message,
+          ip_hash: ip.replace(/\.\d+$/, ".xxx"), // Privacy friendly IP mask
+          delivery_status: deliveryStatus,
+          created_at: nowIso,
+        });
+      } catch (dbError) {
+        console.warn("[Contact DB Save Warning]:", dbError);
+      }
+    }
+
+    // Record in memory for admin dashboard fallback
+    recordMessage({
+      id: messageId,
+      name,
+      email,
+      subject,
+      message,
+      ip: ip.replace(/\.\d+$/, ".xxx"),
+      deliveryStatus,
+      createdAt: nowIso,
+    });
+
+    console.log(`[Contact Inquiry Processed] From: ${name} <${email}> | Status: ${deliveryStatus}`);
 
     return Response.json(
       {
         success: true,
         message: "Thank you! Your message has been received. Aryan will get back to you shortly.",
-        timestamp: new Date().toISOString(),
+        timestamp: nowIso,
       },
       { status: 200 }
     );

@@ -1,0 +1,15 @@
+import type { Metadata } from "next";
+import AdminClient from "./AdminClient";
+
+export const metadata: Metadata = {
+  title: "Admin Console — Aryan Patel Portfolio",
+  description: "Private administrative dashboard for messages, projects, and system telemetry.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
+export default function AdminPage() {
+  return <AdminClient />;
+}

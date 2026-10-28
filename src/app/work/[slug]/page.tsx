@@ -115,10 +115,10 @@ const PROJECTS_MAP: Record<string, ProjectData> = {
     image: "/images/projects/project-ml.jpg",
   },
   "ai-event-organiser": {
-    title: "Full-Stack AI Event Organiser",
+    title: "Patel & Co. AI Event Organiser",
     category: "FULL-STACK AI · NEXT.JS & CONVEX",
-    type: "Production Web Platform",
-    status: "Completed Application",
+    type: "Production Web Platform (WIP)",
+    status: "Work in Progress",
     tech: "Next.js · Convex Reactive DB · Clerk Auth · Shadcn UI",
     summary:
       "Modern full-stack event organization ecosystem featuring real-time collaborative scheduling, secure Clerk user authentication, and AI-curated event recommendations.",
@@ -130,8 +130,47 @@ const PROJECTS_MAP: Record<string, ProjectData> = {
     ],
     objective:
       "Demonstrating end-to-end full stack competence by synthesizing reactive backend sync, rock-solid security, and modern UI engineering.",
-    githubUrl: "https://github.com/AryanPatel-AI/ai-event-organiser",
+    githubUrl: "https://github.com/AryanPatel-AI/Patel-And-Co.Planner",
     image: "/images/projects/ai-event-hero.png",
+  },
+  "smart-crop-recommendation": {
+    title: "Smart Crop Recommendation System",
+    category: "DATA SCIENCE & AGRITECH",
+    type: "Machine Learning Web Service",
+    status: "Live in Production",
+    tech: "Python · Scikit-Learn · Hugging Face Spaces · Gradio",
+    summary:
+      "Data-driven agricultural intelligence platform that leverages environmental factors, soil nutrient profiles (N, P, K), rainfall, and climate metrics to predict optimal crop yields.",
+    features: [
+      "Multi-variable predictive classification model trained on agronomic soil datasets",
+      "Interactive parameter tuning for nitrogen, phosphorus, potassium, temperature, and humidity",
+      "Immediate inference generation with probability confidence rankings",
+      "Deployed on Hugging Face Spaces for 24/7 global accessibility and zero-setup testing",
+    ],
+    objective:
+      "Applying machine learning to fundamental agricultural challenges, empowering farmers and researchers with actionable soil data.",
+    githubUrl: "https://github.com/AryanPatel-AI/Smart-crop-recommendation",
+    liveUrl: "https://huggingface.co/spaces/aryanpatel58/SmartCropRecommendation",
+    image: "/images/projects/project-ml.jpg",
+  },
+  studioza: {
+    title: "Studioza Photography Suite",
+    category: "FULL-STACK PLATFORM · PHOTOGRAPHY",
+    type: "Studio Management & Proofing Platform",
+    status: "Work in Progress",
+    tech: "Next.js · TypeScript · Tailwind CSS · Supabase",
+    summary:
+      "Modern full-stack platform built specifically for professional photographers and creative studios to showcase portfolio collections, manage client bookings, and deliver private client proofing galleries.",
+    features: [
+      "Dynamic client photo delivery portal with secure presigned high-resolution downloads",
+      "Integrated booking workflow and commission request management",
+      "High-performance responsive image rendering with modern WebP/AVIF format optimization",
+      "Architected with Supabase PostgreSQL and secure Row Level Security",
+    ],
+    objective:
+      "Unifying Aryan Patel's dual passions for fine-art photography and software architecture into a purpose-built creative product.",
+    githubUrl: "https://github.com/AryanPatel-AI/Studioza",
+    image: "/images/projects/project-ai.jpg",
   },
 };
 
