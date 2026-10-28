@@ -100,6 +100,42 @@ test("GET /api/admin/messages validates secret admin token", async () => {
   assert.ok(Array.isArray(data.data));
 });
 
+test("GET /api/contact returns 405 Method Not Allowed", async () => {
+  const { GET } = await import("../src/app/api/contact/route.ts");
+  const res = await GET();
+  assert.equal(res.status, 405);
+  const data = await res.json();
+  assert.equal(data.success, false);
+  assert.ok(data.error.includes("Method Not Allowed"));
+});
+
+test("Verify contact message persistence generates compliant UUID and Resend reply-to", async () => {
+  const fs = await import("node:fs");
+  const emailSource = fs.readFileSync("src/lib/email.ts", "utf8");
+  const contactRoute = fs.readFileSync("src/app/api/contact/route.ts", "utf8");
+
+  // Verify Resend sets direct replyTo
+  assert.ok(emailSource.includes("replyTo: payload.email"), "Must include replyTo: payload.email");
+  assert.ok(emailSource.includes("escapeHtml"), "Must sanitize HTML entities in email template");
+
+  // Verify messageId uses standard UUID
+  assert.ok(contactRoute.includes("crypto.randomUUID()"), "Must generate standard RFC UUID for messageId");
+  assert.ok(!contactRoute.includes('`msg_${Date.now()}'), "Must not use legacy non-UUID msg_ prefix");
+});
+
+test("OPTIONS /api/contact and /api/admin/messages return 204 with CORS headers", async () => {
+  const { OPTIONS: contactOptions } = await import("../src/app/api/contact/route.ts");
+  const { OPTIONS: adminOptions } = await import("../src/app/api/admin/messages/route.ts");
+
+  const contactRes = await contactOptions();
+  assert.equal(contactRes.status, 204);
+  assert.equal(contactRes.headers.get("access-control-allow-origin"), "*");
+
+  const adminRes = await adminOptions();
+  assert.equal(adminRes.status, 204);
+  assert.equal(adminRes.headers.get("access-control-allow-origin"), "*");
+});
+
 test("Verify all portraits are credited strictly to @___aryan___patel and not click_by_aryan", async () => {
   const fs = await import("node:fs");
   const photoClient = fs.readFileSync("src/app/photography/PhotographyClient.tsx", "utf8");

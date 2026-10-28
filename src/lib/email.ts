@@ -13,6 +13,15 @@ export interface EmailDispatchResult {
   error?: string;
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 export async function sendContactNotification(
   payload: ContactEmailPayload
 ): Promise<EmailDispatchResult> {
@@ -27,20 +36,25 @@ export async function sendContactNotification(
 
   try {
     const resend = new Resend(apiKey);
+    const safeName = escapeHtml(payload.name);
+    const safeEmail = escapeHtml(payload.email);
+    const safeSubject = escapeHtml(payload.subject);
+    const safeMessage = escapeHtml(payload.message);
 
-    // 1. Send notification to Aryan
+    // 1. Send notification to Aryan with direct user reply-to
     const toOwnerResult = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: "aryanpatel66871@gmail.com",
+      replyTo: payload.email,
       subject: `[Portfolio Inquiry] ${payload.subject} — from ${payload.name}`,
       text: `Name: ${payload.name}\nEmail: ${payload.email}\nSubject: ${payload.subject}\n\nMessage:\n${payload.message}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e0d5c1; border-radius: 8px; background-color: #fcf7ee; color: #211e19;">
           <h2 style="font-size: 20px; color: #b49368; border-bottom: 2px solid #b49368; padding-bottom: 8px;">New Portfolio Inquiry</h2>
-          <p><strong>From:</strong> ${payload.name} (&lt;<a href="mailto:${payload.email}">${payload.email}</a>&gt;)</p>
-          <p><strong>Subject:</strong> ${payload.subject}</p>
+          <p><strong>From:</strong> ${safeName} (&lt;<a href="mailto:${safeEmail}">${safeEmail}</a>&gt;)</p>
+          <p><strong>Subject:</strong> ${safeSubject}</p>
           <div style="background-color: #f8eddb; padding: 16px; border-radius: 6px; margin: 16px 0; border-left: 4px solid #b49368;">
-            <p style="white-space: pre-wrap; margin: 0; line-height: 1.6;">${payload.message}</p>
+            <p style="white-space: pre-wrap; margin: 0; line-height: 1.6;">${safeMessage}</p>
           </div>
           <p style="font-size: 11px; color: #77573a; margin-top: 24px;">Sent via Aryan Patel Portfolio API Route.</p>
         </div>

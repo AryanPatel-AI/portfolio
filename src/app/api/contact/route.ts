@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     }
 
     // 2. Parse & Validate Payload
-    let body: any;
+    let body: unknown;
     try {
       body = await request.json();
     } catch {
@@ -41,7 +41,8 @@ export async function POST(request: Request) {
     }
 
     // 3. Honeypot check (Bots fill hidden fields)
-    if (body && (body.website || body.honeypot || body.company_url)) {
+    const rawBody = (body && typeof body === "object") ? (body as Record<string, unknown>) : {};
+    if (rawBody.website || rawBody.honeypot || rawBody.company_url) {
       console.warn("[Bot Detected via Honeypot]:", ip);
       // Return 200 to mislead the bot, but do not process
       return Response.json(
@@ -60,7 +61,8 @@ export async function POST(request: Request) {
 
     const { name, email, subject, message } = validation.data;
     const nowIso = new Date().toISOString();
-    const messageId = `msg_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+    // Standard RFC-4122 UUID matching PostgreSQL UUID PRIMARY KEY
+    const messageId = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `00000000-0000-4000-8000-${Date.now().toString(16).padStart(12, "0")}`;
 
     // 4. Send Email Notification via Resend
     const emailResult = await sendContactNotification({
@@ -127,4 +129,15 @@ export async function GET() {
     { success: false, error: "Method Not Allowed. Use POST to submit contact inquiries." },
     { status: 405 }
   );
+}
+
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
 }

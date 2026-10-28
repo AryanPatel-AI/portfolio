@@ -28,7 +28,11 @@ export default function AdminClient() {
     setError("");
 
     try {
-      const res = await fetch(`/api/admin/messages?token=${encodeURIComponent(token.trim())}`);
+      const res = await fetch("/api/admin/messages", {
+        headers: {
+          Authorization: `Bearer ${token.trim()}`,
+        },
+      });
       const data = await res.json();
 
       if (res.ok && data.success) {
@@ -47,7 +51,11 @@ export default function AdminClient() {
   const refreshMessages = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/admin/messages?token=${encodeURIComponent(token.trim())}`);
+      const res = await fetch("/api/admin/messages", {
+        headers: {
+          Authorization: `Bearer ${token.trim()}`,
+        },
+      });
       const data = await res.json();
       if (res.ok && data.success) {
         setMessages(data.data || []);
@@ -57,6 +65,13 @@ export default function AdminClient() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setToken("");
+    setMessages([]);
+    setError("");
   };
 
   return (
@@ -70,12 +85,22 @@ export default function AdminClient() {
             Admin Console · Aryan Patel
           </span>
         </Link>
-        <Link
-          href="/"
-          className="text-[11px] font-semibold tracking-wider uppercase text-[#77573a] hover:text-[#211e19]"
-        >
-          Exit to Site →
-        </Link>
+        <div className="flex items-center gap-4">
+          {isAuthenticated && (
+            <button
+              onClick={handleLogout}
+              className="text-[11px] font-semibold tracking-wider uppercase text-[#a34141] hover:text-[#7d2c2c] transition-colors cursor-pointer"
+            >
+              Sign Out ⎋
+            </button>
+          )}
+          <Link
+            href="/"
+            className="text-[11px] font-semibold tracking-wider uppercase text-[#77573a] hover:text-[#211e19]"
+          >
+            Exit to Site →
+          </Link>
+        </div>
       </header>
 
       <main className="max-w-5xl mx-auto px-6 py-12">
@@ -206,7 +231,7 @@ export default function AdminClient() {
                           {msg.delivery_status || msg.deliveryStatus || "processed"}
                         </span>
                         <span className="text-[10px] font-mono text-[#9f8973]">
-                          {new Date(msg.created_at || msg.createdAt || Date.now()).toLocaleString()}
+                          {msg.created_at || msg.createdAt ? new Date(msg.created_at || msg.createdAt || "").toLocaleString() : "Recently"}
                         </span>
                       </div>
                     </div>

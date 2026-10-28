@@ -19,6 +19,7 @@ export default function ContactPage() {
     email: "",
     subject: "",
     message: "",
+    website: "",
   });
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [formFeedback, setFormFeedback] = useState("");
@@ -47,7 +48,7 @@ export default function ContactPage() {
       } else {
         setFormStatus("success");
         setFormFeedback(data.message || "Thank you! Your message has been received.");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", subject: "", message: "", website: "" });
       }
     } catch {
       setFormStatus("error");
@@ -375,6 +376,20 @@ export default function ContactPage() {
               )}
 
               <form onSubmit={handleFormSubmit} className="space-y-4">
+                {/* Anti-spam honeypot (invisible to humans, traps automated scrapers) */}
+                <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+                  <label htmlFor="contact-website">Website</label>
+                  <input
+                    id="contact-website"
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label

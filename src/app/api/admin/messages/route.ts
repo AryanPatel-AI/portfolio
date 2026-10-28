@@ -4,7 +4,13 @@ import { getInMemoryMessages } from "../../../../lib/messages.ts";
 export const dynamic = "force-dynamic";
 
 function isAuthorized(request: Request): boolean {
-  const secretKey = process.env.ADMIN_SECRET_KEY || "aryan-admin-2026";
+  // In production, ADMIN_SECRET_KEY is strictly required and never falls back to a hardcoded string
+  const secretKey =
+    process.env.ADMIN_SECRET_KEY ||
+    (process.env.NODE_ENV !== "production" ? "aryan-admin-2026" : "");
+
+  if (!secretKey) return false;
+
   const authHeader = request.headers.get("authorization");
   const customHeader = request.headers.get("x-admin-token");
 
@@ -49,5 +55,16 @@ export async function GET(request: Request) {
     source: "in-memory",
     count: inMemory.length,
     data: inMemory,
+  });
+}
+
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization, x-admin-token",
+    },
   });
 }
